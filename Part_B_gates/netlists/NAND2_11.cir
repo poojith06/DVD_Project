@@ -1,0 +1,64 @@
+* NAND2, input AB = 11 - Part B SPICE reference, 200 corners, sampling done entirely inside ngspice
+* Transistors are the dataset netlists' devices, called as subcircuits from Datasets/netlists/*.sub
+* Transistor states for this input: Xpa=pmos_off, Xpb=pmos_off, Xna=nmos_on, Xnb=nmos_on
+* Run (from this folder):  ngspice -b NAND2_11.cir      Output: ../data/spice_NAND2_11.csv
+* Leakage = current drawn from the VDD supply.
+.options gmin=1e-18 abstol=1e-18 reltol=1e-6 vntol=1e-9
+.include ../../Datasets/netlists/nmos_on.sub
+.include ../../Datasets/netlists/pmos_off.sub
+
+* ---- supply and inputs (inputs at exactly 0 or VDD) ----
+Vdd vdd 0 dc 1
+Va a 0 dc 0
+Vb b 0 dc 0
+
+* ---- NAND2 (parallel PMOS pull-up, series NMOS pull-down; x = node between the series NMOS) ----
+Xpa out a vdd vdd pmos_off w=88n
+Xpb out b vdd vdd pmos_off w=88n
+Xna out a x 0 nmos_on w=88n
+Xnb x b 0 0 nmos_on w=88n
+
+.control
+set rndseed=7                    $ same seed in every Part B netlist -> the same 200 corners for every gate and input
+option numdgt=10
+echo "corner,A,B,vdd,temp,n_vth0,n_toxe,n_ndep,n_u0,n_xj,p_vth0,p_toxe,p_ndep,p_u0,p_xj,leak,v_int,v_n,v_out" > ../data/spice_NAND2_11.csv
+let c = 0
+while c < 200
+  * ---- draw one corner (sunif(0) is uniform in -1..1) ----
+  let vdd = 1.0*(1 + 0.1*sunif(0))              $ assigned VDD = 1 V, +-10 %
+  let temp = 42.5 + 82.5*sunif(0)               $ -40 .. 125 C
+  * NMOS process parameters (nominal from 22nm_HP.pm, +-10 %), shared by all NMOS in the gate
+  let n_vth0 = 0.50308*(1 + 0.1*sunif(0))
+  let n_toxe = 1.05e-09*(1 + 0.1*sunif(0))
+  let n_ndep = 5.5e+18*(1 + 0.1*sunif(0))
+  let n_u0 = 0.04*(1 + 0.1*sunif(0))
+  let n_xj = 7.2e-09*(1 + 0.1*sunif(0))
+  * PMOS process parameters (nominal from 22nm_HP.pm, +-10 %), shared by all PMOS in the gate
+  let p_vth0 = -0.4606*(1 + 0.1*sunif(0))
+  let p_toxe = 1.1e-09*(1 + 0.1*sunif(0))
+  let p_ndep = 4.4e+18*(1 + 0.1*sunif(0))
+  let p_u0 = 0.0095*(1 + 0.1*sunif(0))
+  let p_xj = 7.2e-09*(1 + 0.1*sunif(0))
+  * ---- apply the corner ----
+  alter vdd dc = $&vdd
+  option temp = $&temp
+  altermod nmos vth0 = $&n_vth0 toxe = $&n_toxe ndep = $&n_ndep u0 = $&n_u0 xj = $&n_xj
+  altermod pmos vth0 = $&p_vth0 toxe = $&p_toxe ndep = $&p_ndep u0 = $&p_u0 xj = $&p_xj
+  * ---- this input: A = 1, B = 1 ----
+  let ia = 1
+  let ib = 1
+  let va = ia*vdd
+  alter va dc = $&va
+  let vb = ib*vdd
+  alter vb dc = $&vb
+  op
+  let leak = -i(vdd)
+  let vint = v(x)
+  let vnn = v(out)
+  let vout = v(out)
+  echo "$&c,$&ia,$&ib,$&vdd,$&temp,$&n_vth0,$&n_toxe,$&n_ndep,$&n_u0,$&n_xj,$&p_vth0,$&p_toxe,$&p_ndep,$&p_u0,$&p_xj,$&leak,$&vint,$&vnn,$&vout" >> ../data/spice_NAND2_11.csv
+  destroy all
+  let c = c + 1
+end
+.endc
+.end
