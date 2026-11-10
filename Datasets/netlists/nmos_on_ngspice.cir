@@ -1,5 +1,6 @@
 * NMOS ON - dataset generation entirely inside ngspice
-* Model: 22nm_HP.pm (PTM HP 22nm)   Run:  ngspice_con -b nmos_on_ngspice.cir
+* Model: 22nm_HP.pm (PTM HP 22nm)
+* Run:  ngspice_con -b nmos_on_ngspice.cir   -> writes nmos_on.csv
 .options gmin=1e-18 abstol=1e-18 reltol=1e-6 vntol=1e-9
 .include 22nm_HP.pm
 
@@ -42,7 +43,12 @@ while k < n
   alter vg dc = $&vg
   alter vb dc = $&vb
   alter m1 w = $&w
-  altermod nmos vth0 = $&p1 toxe = $&p2 ndep = $&p3 u0 = $&p4 xj = $&p5
+  * one parameter per altermod line (ngspice applies only the first parameter on a line)
+  altermod nmos vth0 = $&p1
+  altermod nmos toxe = $&p2
+  altermod nmos ndep = $&p3
+  altermod nmos u0 = $&p4
+  altermod nmos xj = $&p5
   option temp = $&t
   * ---- simulate and append one CSV row (currents INTO each terminal) ----
   op
