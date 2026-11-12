@@ -1,0 +1,67 @@
+
+=== nmos_on: 10000 rows | dataset KCL residual / largest current: median 5.1e-07, max 2.8e-02
+  [nmos_on] components ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd']
+    epoch 100: val Huber (decades) per component [5.5184e-03 1.1531e-09 3.3213e-03 5.0943e-03 2.9077e-03 2.0710e-03
+ 1.1760e-03 2.6428e-03 6.5035e-03]  32s
+    epoch 200: val Huber (decades) per component [1.3994e-03 6.5552e-10 6.4507e-04 4.7987e-03 1.2861e-03 9.7782e-04
+ 5.7960e-04 2.4559e-03 5.0318e-03]  64s
+    epoch 300: val Huber (decades) per component [8.4931e-04 2.6769e-10 6.1646e-04 1.8505e-03 6.8801e-04 6.2940e-04
+ 1.3468e-04 6.2855e-04 1.1114e-03]  96s
+    epoch 400: val Huber (decades) per component [7.7536e-04 1.7621e-10 1.0127e-04 1.7063e-03 4.1030e-04 4.1869e-04
+ 9.5334e-05 4.4290e-04 5.5807e-04]  126s
+    epoch 500: val Huber (decades) per component [6.8927e-04 1.6465e-10 6.1144e-05 1.4975e-03 3.7507e-04 3.9019e-04
+ 7.8029e-05 3.9088e-04 4.7661e-04]  156s
+  components_mlp (161s)   median % id / ig / is / ib   (p95 %)
+    validation  0.385 / 0.164 / 0.386 / 0.157   (3.03 / 0.73 / 3.03 / 0.75)
+    test        0.408 / 0.169 / 0.408 / 0.154   (2.24 / 0.79 / 2.24 / 0.82)
+
+=== nmos_off: 10000 rows | dataset KCL residual / largest current: median 8.5e-07, max 9.0e-06
+  [nmos_off] components ['id', 'ibd', 'ibs', 'isub', 'igidl', 'igisl', 'igs', 'igd', 'igb']
+    epoch 100: val Huber (decades) per component [1.4971e-02 1.0493e-09 2.0868e-03 8.5244e-03 1.3606e-02 1.5739e-02
+ 2.2492e-03 1.4530e-03 1.1006e-02]  31s
+    epoch 200: val Huber (decades) per component [5.3046e-03 4.0812e-10 1.0108e-03 7.2873e-03 6.0909e-03 6.5904e-03
+ 2.7232e-04 8.6249e-04 1.0272e-02]  61s
+    epoch 300: val Huber (decades) per component [4.2191e-03 1.3706e-10 2.1814e-04 2.8347e-03 3.6485e-03 4.2834e-03
+ 1.5824e-04 2.9025e-04 8.4950e-03]  92s
+    epoch 400: val Huber (decades) per component [1.6138e-03 9.9953e-11 6.6456e-05 2.5699e-03 2.3891e-03 2.8191e-03
+ 5.9822e-05 4.2183e-05 7.1685e-03]  124s
+    epoch 500: val Huber (decades) per component [1.2695e-03 9.5782e-11 4.9011e-05 2.3312e-03 2.0014e-03 2.3192e-03
+ 3.8856e-05 2.8458e-05 6.9540e-03]  153s
+  components_mlp (154s)   median % id / ig / is / ib   (p95 %)
+    validation  0.191 / 0.101 / 0.155 / 0.003   (1.91 / 0.41 / 1.93 / 0.44)
+    test        0.211 / 0.107 / 0.192 / 0.004   (2.34 / 0.47 / 2.24 / 0.51)
+
+=== pmos_on: 10000 rows | dataset KCL residual / largest current: median 4.8e-09, max 1.4e-02
+  [pmos_on] components ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd']
+    epoch 100: val Huber (decades) per component [2.1305e-03 1.0650e-09 2.4565e-03 5.1796e-03 5.1033e-03 4.7684e-03
+ 4.6643e-04 1.0104e-02 1.3098e-02]  31s
+    epoch 200: val Huber (decades) per component [2.1303e-03 3.8426e-10 8.2951e-04 4.8635e-03 1.0821e-03 1.9594e-03
+ 8.7617e-04 3.4381e-03 6.9483e-03]  61s
+    epoch 300: val Huber (decades) per component [6.5942e-04 1.4274e-10 4.8379e-04 4.1294e-03 4.2397e-04 9.7348e-04
+ 1.4194e-04 2.2859e-03 1.8344e-03]  91s
+    epoch 400: val Huber (decades) per component [4.3250e-04 1.0413e-10 9.4573e-05 2.9524e-03 2.1294e-04 5.4245e-04
+ 6.3712e-05 1.3992e-03 1.3787e-03]  120s
+    epoch 500: val Huber (decades) per component [3.6014e-04 1.0049e-10 5.1330e-05 2.7804e-03 1.7307e-04 5.0006e-04
+ 5.4208e-05 1.3111e-03 1.3376e-03]  150s
+  components_mlp (151s)   median % id / ig / is / ib   (p95 %)
+    validation  0.372 / 0.186 / 0.372 / 0.178   (2.15 / 0.77 / 2.15 / 0.76)
+    test        0.421 / 0.190 / 0.421 / 0.185   (2.13 / 0.78 / 2.13 / 0.75)
+
+=== pmos_off: 10000 rows | dataset KCL residual / largest current: median 1.1e-06, max 9.9e-06
+  [pmos_off] components ['id', 'ibd', 'ibs', 'isub', 'igidl', 'igisl', 'igs', 'igd', 'igb']
+    epoch 100: val Huber (decades) per component [8.9587e-03 1.0610e-09 8.1709e-03 9.1203e-03 1.1913e-02 1.6511e-02
+ 5.1049e-04 7.1197e-04 9.7792e-03]  23s
+    epoch 200: val Huber (decades) per component [4.7620e-03 3.9022e-10 2.4588e-04 5.6014e-03 9.3626e-03 6.7686e-03
+ 1.9246e-04 2.0395e-03 5.8147e-03]  38s
+    epoch 300: val Huber (decades) per component [4.0778e-03 1.3420e-10 2.0248e-04 2.2291e-03 5.7871e-03 7.3565e-03
+ 2.8264e-04 8.5862e-05 4.8063e-03]  51s
+    epoch 400: val Huber (decades) per component [1.5647e-03 9.7619e-11 8.3268e-05 1.6642e-03 2.4072e-03 2.4325e-03
+ 4.1111e-05 3.3434e-05 3.9727e-03]  65s
+    epoch 500: val Huber (decades) per component [1.3026e-03 9.3987e-11 4.3641e-05 1.4843e-03 2.2133e-03 2.1891e-03
+ 2.8654e-05 2.2118e-05 3.7834e-03]  78s
+  components_mlp (79s)   median % id / ig / is / ib   (p95 %)
+    validation  0.221 / 0.125 / 0.399 / 0.004   (2.77 / 0.52 / 3.16 / 0.50)
+    test        0.154 / 0.123 / 0.355 / 0.003   (2.15 / 0.55 / 2.35 / 0.46)
+
+Saved models to C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\ML_Models\components_mlp\saved_models
+Saved results to C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\ML_Models\components_mlp\results
