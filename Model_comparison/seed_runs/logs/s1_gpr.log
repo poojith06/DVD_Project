@@ -1,0 +1,15 @@
+  File "C:\Users\anees\anaconda3\Lib\site-packages\joblib\externals\loky\backend\context.py", line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[gpr] nmos_on  fit   4990s | val median 0.15 0.23 0.16 0.20 | test median 0.16 0.22 0.16 0.18 | test p95 2.6 2.5 2.7 1.3 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.00319}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.0039}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.00374}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.00152}}
+[gpr] nmos_off fit  10637s | val median 2.36 0.00 2.27 0.94 | test median 2.55 0.00 2.23 0.89 | test p95 58.7 0.5 57.8 17.2 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.04633}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.00343}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.05361}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.02071}}
+[gpr] pmos_on  fit   1346s | val median 0.10 0.03 0.10 0.18 | test median 0.10 0.03 0.10 0.17 | test p95 1.8 0.3 1.7 1.2 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.0044}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.00033}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.00245}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.00153}}
+[gpr] pmos_off fit   1383s | val median 4.98 0.04 4.24 0.84 | test median 5.00 0.04 4.00 0.84 | test p95 44.2 1.5 65.8 13.7 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.05495}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.00205}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.04878}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.01898}}

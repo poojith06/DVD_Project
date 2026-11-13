@@ -1,0 +1,9 @@
+  [nmos_on] components ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd'] (dropped ['igidl', 'igisl'])
+    epoch 100: val Huber (dec) [0.0055 0.0017 0.0073 0.0051 0.009  0.0083 0.0012 0.0026 0.0065]  32s
+    epoch 200: val Huber (dec) [0.0014 0.0012 0.0044 0.0048 0.0048 0.0061 0.0006 0.0025 0.005 ]  64s
+    epoch 300: val Huber (dec) [0.0008 0.0011 0.0039 0.0019 0.004  0.0047 0.0001 0.0006 0.0011]  97s
+    epoch 400: val Huber (dec) [7.7536e-04 8.9018e-04 3.4311e-03 1.7063e-03 3.0161e-03 4.0182e-03
+ 9.5334e-05 4.4290e-04 5.5807e-04]  129s
+    epoch 500: val Huber (dec) [6.8927e-04 8.9180e-04 3.2229e-03 1.4975e-03 2.9242e-03 3.8466e-03
+ 7.8029e-05 3.9088e-04 4.7661e-04]  171s
+[components_mlp] nmos_on  fit    177s | val median 0.39 0.19 0.39 0.17 | test median 0.41 0.20 0.41 0.17 | test p95 2.2 1.2 2.2 0.8 | {'components': ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd'], 'signs': {'id': 1, 'ibd': -1, 'ibs': -1, 'isub': 1, 'igs': 1, 'igd': 1, 'igb': 1, 'igcs': 1, 'igcd': 1}, 'val_huber_dec': {'id': 0.00069, 'ibd': 0.00087, 'ibs': 0.00322, 'isub': 0.00149, 'igs': 0.0029, 'igd': 0.00382, 'igb': 8e-05, 'igcs': 0.00039, 'igcd': 0.00048}, 'best_epoch': {'id': 469, 'ibd': 339, 'ibs': 451, 'isub': 474, 'igs': 407, 'igd': 448, 'igb': 492, 'igcs': 477, 'igcd': 487}, 'max_share': {'id': 1.0, 'ibd': 0.979, 'ibs': 0.958, 'isub': 0.944, 'igidl': 0.0, 'igisl': 0.0, 'igs': 0.995, 'igd': 0.978, 'igb': 1.0, 'igcs': 0.368, 'igcd': 0.345}}

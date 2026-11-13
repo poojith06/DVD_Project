@@ -1,0 +1,18 @@
+{
+ "id": {
+  "n_neighbors": 10,
+  "val_mae_dec": 0.18723
+ },
+ "ig": {
+  "n_neighbors": 10,
+  "val_mae_dec": 0.17849
+ },
+ "is": {
+  "n_neighbors": 10,
+  "val_mae_dec": 0.1872
+ },
+ "ib": {
+  "n_neighbors": 20,
+  "val_mae_dec": 0.22088
+ }
+}

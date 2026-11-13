@@ -1,0 +1,26 @@
+{
+ "id": {
+  "C": 10,
+  "gamma": 0.03,
+  "epsilon": 0.005,
+  "val_mae_dec": 0.12622
+ },
+ "ig": {
+  "C": 100,
+  "gamma": 0.01,
+  "epsilon": 0.005,
+  "val_mae_dec": 0.45683
+ },
+ "is": {
+  "C": 10,
+  "gamma": 0.03,
+  "epsilon": 0.005,
+  "val_mae_dec": 0.15242
+ },
+ "ib": {
+  "C": 100,
+  "gamma": 0.03,
+  "epsilon": 0.005,
+  "val_mae_dec": 0.06466
+ }
+}

@@ -1,0 +1,78 @@
+  [nmos_on] components ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd'] (dropped ['igidl', 'igisl'])
+    epoch 100: val Huber (dec) [2.8817e-03 1.1807e-09 1.2963e-03 9.3873e-03 3.3659e-03 5.1668e-03
+ 1.7942e-03 7.5703e-03 1.6832e-03]  30s
+    epoch 200: val Huber (dec) [1.3225e-03 6.2419e-10 6.9058e-04 3.4916e-03 2.0062e-03 1.0781e-03
+ 6.4025e-04 1.6415e-03 1.6425e-03]  60s
+    epoch 300: val Huber (dec) [1.0343e-03 2.2124e-10 4.6986e-04 2.7658e-03 7.6119e-04 6.5066e-04
+ 7.9540e-05 8.4977e-04 9.8359e-04]  90s
+    epoch 400: val Huber (dec) [6.0299e-04 1.4077e-10 7.4728e-05 2.2508e-03 4.4296e-04 4.4218e-04
+ 4.3824e-05 8.7088e-04 5.8372e-04]  119s
+    epoch 500: val Huber (dec) [5.5799e-04 1.3298e-10 5.7749e-05 2.2034e-03 3.7234e-04 3.8506e-04
+ 3.1371e-05 5.8168e-04 5.3554e-04]  149s
+[components_mlp_vf] nmos_on  fit    153s | val median 0.39 0.16 0.39 0.18 | test median 0.38 0.15 0.37 0.18 | test p95 2.6 0.7 2.6 0.8 | {'components': ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd'], 'signs': {'id': 1, 'ibd': -1, 'ibs': -1, 'isub': 1, 'igs': 1, 'igd': 1, 'igb': 1, 'igcs': 1, 'igcd': 1}, 'val_huber_dec': {'id': 0.00056, 'ibd': 0.0, 'ibs': 6e-05, 'isub': 0.0022, 'igs': 0.00037, 'igd': 0.00038, 'igb': 3e-05, 'igcs': 0.00058, 'igcd': 0.00053}, 'best_epoch': {'id': 477, 'ibd': 481, 'ibs': 480, 'isub': 468, 'igs': 440, 'igd': 476, 'igb': 488, 'igcs': 492, 'igcd': 493}, 'max_share': {'id': 1.0, 'ibd': 0.98, 'ibs': 0.958, 'isub': 0.934, 'igidl': 0.0, 'igisl': 0.0, 'igs': 0.995, 'igd': 0.978, 'igb': 1.0, 'igcs': 0.368, 'igcd': 0.343}}
+  [nmos_off] components ['id', 'ibd', 'ibs', 'isub', 'igidl', 'igisl', 'igs', 'igd', 'igb'] (dropped ['igcs', 'igcd'])
+    epoch 100: val Huber (dec) [1.3708e-02 1.0931e-09 2.6223e-03 1.1653e-02 2.0738e-02 1.5732e-02
+ 3.1716e-03 4.2885e-04 1.1308e-02]  30s
+    epoch 200: val Huber (dec) [3.6642e-03 5.1373e-10 9.2337e-04 4.5140e-03 1.0414e-02 1.1576e-02
+ 4.6117e-04 2.6690e-04 6.4592e-03]  60s
+    epoch 300: val Huber (dec) [3.5234e-03 2.0105e-10 2.1563e-04 2.8885e-03 4.3951e-03 6.1155e-03
+ 1.4455e-04 2.1151e-04 5.8245e-03]  89s
+    epoch 400: val Huber (dec) [1.5839e-03 1.4643e-10 1.2213e-04 2.2789e-03 2.9502e-03 3.9501e-03
+ 3.4457e-05 3.6106e-05 4.3995e-03]  119s
+    epoch 500: val Huber (dec) [1.1665e-03 1.3958e-10 8.7858e-05 2.0736e-03 2.5468e-03 3.2474e-03
+ 2.7929e-05 2.2088e-05 4.2682e-03]  148s
+[components_mlp_vf] nmos_off fit    148s | val median 0.17 0.09 0.19 0.00 | test median 0.18 0.10 0.19 0.01 | test p95 2.1 0.4 2.3 0.6 | {'components': ['id', 'ibd', 'ibs', 'isub', 'igidl', 'igisl', 'igs', 'igd', 'igb'], 'signs': {'id': 1, 'ibd': -1, 'ibs': -1, 'isub': 1, 'igidl': 1, 'igisl': 1, 'igs': -1, 'igd': -1, 'igb': -1}, 'val_huber_dec': {'id': 0.00117, 'ibd': 0.0, 'ibs': 9e-05, 'isub': 0.00203, 'igidl': 0.0025, 'igisl': 0.00321, 'igs': 3e-05, 'igd': 2e-05, 'igb': 0.00413}, 'best_epoch': {'id': 480, 'ibd': 476, 'ibs': 499, 'isub': 352, 'igidl': 421, 'igisl': 480, 'igs': 480, 'igd': 469, 'igb': 402}, 'max_share': {'id': 1.0, 'ibd': 1.0, 'ibs': 1.0, 'isub': 0.928, 'igidl': 0.985, 'igisl': 0.991, 'igs': 1.0, 'igd': 1.0, 'igb': 0.000874, 'igcs': 6.41e-08, 'igcd': 6.4e-08}}
+  [pmos_on] components ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd'] (dropped ['igidl', 'igisl'])
+    epoch 100: val Huber (dec) [2.8424e-03 1.1359e-09 7.2236e-03 4.3891e-03 3.5917e-03 4.4966e-03
+ 2.1972e-03 6.3226e-03 7.9758e-03]  30s
+    epoch 200: val Huber (dec) [4.0078e-03 5.3401e-10 6.8879e-04 2.8945e-03 1.5584e-03 1.6096e-03
+ 2.6954e-04 3.1196e-03 3.0505e-03]  59s
+    epoch 300: val Huber (dec) [4.4211e-04 1.7305e-10 1.9005e-04 2.0557e-03 4.7815e-04 6.8949e-04
+ 2.6073e-04 1.6425e-03 1.8778e-03]  89s
+    epoch 400: val Huber (dec) [2.5248e-04 1.0635e-10 7.9426e-05 1.3725e-03 3.4424e-04 4.3250e-04
+ 3.6902e-05 1.0522e-03 1.1428e-03]  118s
+    epoch 500: val Huber (dec) [1.8627e-04 9.9553e-11 5.9238e-05 1.1829e-03 2.7806e-04 4.0264e-04
+ 2.7589e-05 9.7894e-04 1.0522e-03]  147s
+[components_mlp_vf] pmos_on  fit    148s | val median 0.33 0.19 0.33 0.18 | test median 0.33 0.19 0.33 0.18 | test p95 1.8 0.7 1.8 0.7 | {'components': ['id', 'ibd', 'ibs', 'isub', 'igs', 'igd', 'igb', 'igcs', 'igcd'], 'signs': {'id': 1, 'ibd': -1, 'ibs': -1, 'isub': 1, 'igs': 1, 'igd': 1, 'igb': 1, 'igcs': 1, 'igcd': 1}, 'val_huber_dec': {'id': 0.00019, 'ibd': 0.0, 'ibs': 6e-05, 'isub': 0.00118, 'igs': 0.00028, 'igd': 0.0004, 'igb': 3e-05, 'igcs': 0.00098, 'igcd': 0.00105}, 'best_epoch': {'id': 485, 'ibd': 471, 'ibs': 471, 'isub': 473, 'igs': 449, 'igd': 457, 'igb': 493, 'igcs': 496, 'igcd': 480}, 'max_share': {'id': 1.0, 'ibd': 0.989, 'ibs': 0.977, 'isub': 0.864, 'igidl': 0.0, 'igisl': 0.0, 'igs': 0.103, 'igd': 0.14, 'igb': 1.0, 'igcs': 0.0472, 'igcd': 0.0464}}
+  [pmos_off] components ['id', 'ibd', 'ibs', 'isub', 'igidl', 'igisl', 'igs', 'igd', 'igb'] (dropped ['igcs', 'igcd'])
+    epoch 100: val Huber (dec) [9.1598e-03 1.2209e-09 1.6115e-03 9.9538e-03 1.9819e-02 2.2387e-02
+ 1.2718e-03 1.6224e-03 9.2238e-03]  30s
+    epoch 200: val Huber (dec) [3.6587e-03 7.3635e-10 1.5025e-03 4.5289e-03 1.0917e-02 1.1213e-02
+ 4.4841e-04 4.9481e-04 6.6512e-03]  60s
+    epoch 300: val Huber (dec) [3.4976e-03 2.9526e-10 4.8045e-04 2.7623e-03 6.8480e-03 7.8650e-03
+ 2.0005e-04 1.1674e-04 5.1569e-03]  89s
+    epoch 400: val Huber (dec) [1.4803e-03 1.8271e-10 1.7187e-04 2.3398e-03 4.2861e-03 4.2452e-03
+ 7.0932e-05 7.7139e-05 4.9878e-03]  120s
+    epoch 500: val Huber (dec) [1.1675e-03 1.6953e-10 1.1355e-04 1.8395e-03 3.7420e-03 3.7817e-03
+ 5.4238e-05 5.1670e-05 4.9710e-03]  149s
+[components_mlp_vf] pmos_off fit    150s | val median 0.18 0.11 0.34 0.00 | test median 0.15 0.11 0.35 0.00 | test p95 2.5 0.5 2.9 0.5 | {'components': ['id', 'ibd', 'ibs', 'isub', 'igidl', 'igisl', 'igs', 'igd', 'igb'], 'signs': {'id': 1, 'ibd': -1, 'ibs': -1, 'isub': 1, 'igidl': 1, 'igisl': 1, 'igs': -1, 'igd': -1, 'igb': -1}, 'val_huber_dec': {'id': 0.00116, 'ibd': 0.0, 'ibs': 0.00011, 'isub': 0.00183, 'igidl': 0.00371, 'igisl': 0.00377, 'igs': 5e-05, 'igd': 5e-05, 'igb': 0.00489}, 'best_epoch': {'id': 475, 'ibd': 483, 'ibs': 491, 'isub': 416, 'igidl': 459, 'igisl': 469, 'igs': 490, 'igd': 478, 'igb': 410}, 'max_share': {'id': 1.0, 'ibd': 1.0, 'ibs': 1.0, 'isub': 0.929, 'igidl': 0.934, 'igisl': 0.996, 'igs': 1.0, 'igd': 1.0, 'igb': 0.407, 'igcs': 3.21e-07, 'igcd': 3.19e-07}}
+  File "C:\Users\anees\anaconda3\Lib\site-packages\joblib\externals\loky\backend\context.py", line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[hybrid_analytic_mlp] nmos_on  fit    438s | val median 0.25 0.35 0.25 0.24 | test median 0.24 0.35 0.24 0.25 | test p95 1.6 1.9 1.7 1.2 | {'val_mae_dec': [0.00296, 0.00388, 0.00362, 0.00176]}
+[hybrid_analytic_mlp] nmos_off fit    446s | val median 0.69 0.08 0.67 0.27 | test median 0.66 0.07 0.66 0.29 | test p95 5.0 0.4 6.6 3.7 | {'val_mae_dec': [0.01095, 0.00068, 0.0087, 0.00583]}
+[hybrid_analytic_mlp] pmos_on  fit    446s | val median 0.34 0.23 0.32 0.22 | test median 0.32 0.22 0.31 0.20 | test p95 2.1 1.2 1.8 1.1 | {'val_mae_dec': [0.00311, 0.00174, 0.00336, 0.00146]}
+[hybrid_analytic_mlp] pmos_off fit    437s | val median 0.68 0.10 0.91 0.28 | test median 0.73 0.10 1.02 0.28 | test p95 5.9 0.8 7.6 3.0 | {'val_mae_dec': [0.00889, 0.00141, 0.01056, 0.00726]}
+[resnet_mlp] nmos_on  fit    672s | val median 0.34 0.15 0.32 0.14 | test median 0.33 0.15 0.30 0.14 | test p95 1.8 1.0 1.8 0.7 | {'val_mae_dec': [0.00341, 0.00241, 0.00361, 0.00095]}
+[resnet_mlp] nmos_off fit    671s | val median 0.33 0.23 0.35 0.44 | test median 0.34 0.22 0.34 0.47 | test p95 3.5 0.7 4.0 6.6 | {'val_mae_dec': [0.00755, 0.00143, 0.00643, 0.01106]}
+[resnet_mlp] pmos_on  fit    670s | val median 0.35 0.08 0.31 0.15 | test median 0.35 0.08 0.31 0.14 | test p95 1.5 0.3 1.4 0.8 | {'val_mae_dec': [0.00252, 0.00054, 0.00218, 0.00109]}
+[resnet_mlp] pmos_off fit    673s | val median 0.60 0.10 0.79 0.42 | test median 0.60 0.11 0.78 0.41 | test p95 4.5 0.6 6.9 3.7 | {'val_mae_dec': [0.00925, 0.00105, 0.01163, 0.01013]}
+   ep 1 9s best val (decades, per variant, group id+is): 0.0901 0.0886 0.0987 0.1060 0.0864 0.0817 0.0807 0.0839
+   ep 50 4792s best val (decades, per variant, group id+is): 0.0040 0.0039 0.0037 0.0032 0.0029 0.0047 0.0024 0.0021
+   ep 100 4847s best val (decades, per variant, group id+is): 0.0024 0.0027 0.0027 0.0026 0.0024 0.0027 0.0017 0.0015
+   ep 150 4901s best val (decades, per variant, group id+is): 0.0023 0.0019 0.0022 0.0021 0.0021 0.0022 0.0016 0.0015
+   ep 200 4962s best val (decades, per variant, group id+is): 0.0018 0.0018 0.0019 0.0018 0.0018 0.0019 0.0014 0.0013
+   ep 250 5024s best val (decades, per variant, group id+is): 0.0017 0.0017 0.0017 0.0017 0.0016 0.0018 0.0014 0.0013
+   ep 300 5082s best val (decades, per variant, group id+is): 0.0015 0.0015 0.0015 0.0016 0.0016 0.0016 0.0014 0.0013
+   ep 350 5135s best val (decades, per variant, group id+is): 0.0014 0.0014 0.0014 0.0014 0.0015 0.0015 0.0013 0.0012
+   ep 400 5194s best val (decades, per variant, group id+is): 0.0014 0.0013 0.0014 0.0014 0.0014 0.0014 0.0013 0.0012
+   ep 450 5247s best val (decades, per variant, group id+is): 0.0013 0.0013 0.0013 0.0013 0.0014 0.0014 0.0012 0.0012
+   ep 500 5289s best val (decades, per variant, group id+is): 0.0013 0.0013 0.0013 0.0013 0.0014 0.0014 0.0012 0.0012

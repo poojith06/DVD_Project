@@ -1,0 +1,22 @@
+{
+ "id": {
+  "learning_rate": 0.05,
+  "max_leaf_nodes": 31,
+  "val_mae_dec": 0.1114
+ },
+ "ig": {
+  "learning_rate": 0.05,
+  "max_leaf_nodes": 31,
+  "val_mae_dec": 0.03809
+ },
+ "is": {
+  "learning_rate": 0.05,
+  "max_leaf_nodes": 31,
+  "val_mae_dec": 0.12116
+ },
+ "ib": {
+  "learning_rate": 0.05,
+  "max_leaf_nodes": 31,
+  "val_mae_dec": 0.01292
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "id": {
+  "max_depth": 4,
+  "val_mae_dec": 0.03026
+ },
+ "ig": {
+  "max_depth": 4,
+  "val_mae_dec": 0.02916
+ },
+ "is": {
+  "max_depth": 4,
+  "val_mae_dec": 0.03054
+ },
+ "ib": {
+  "max_depth": 4,
+  "val_mae_dec": 0.04436
+ }
+}

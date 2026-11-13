@@ -1,0 +1,59 @@
+{
+ "components": [
+  "id",
+  "ibd",
+  "ibs",
+  "isub",
+  "igs",
+  "igd",
+  "igb",
+  "igcs",
+  "igcd"
+ ],
+ "signs": {
+  "id": 1,
+  "ibd": -1,
+  "ibs": -1,
+  "isub": 1,
+  "igs": 1,
+  "igd": 1,
+  "igb": 1,
+  "igcs": 1,
+  "igcd": 1
+ },
+ "val_huber_dec": {
+  "id": 0.00069,
+  "ibd": 0.00087,
+  "ibs": 0.00322,
+  "isub": 0.00149,
+  "igs": 0.0029,
+  "igd": 0.00382,
+  "igb": 8e-05,
+  "igcs": 0.00039,
+  "igcd": 0.00048
+ },
+ "best_epoch": {
+  "id": 469,
+  "ibd": 339,
+  "ibs": 451,
+  "isub": 474,
+  "igs": 407,
+  "igd": 448,
+  "igb": 492,
+  "igcs": 477,
+  "igcd": 487
+ },
+ "max_share": {
+  "id": 1.0,
+  "ibd": 0.979,
+  "ibs": 0.958,
+  "isub": 0.944,
+  "igidl": 0.0,
+  "igisl": 0.0,
+  "igs": 0.995,
+  "igd": 0.978,
+  "igb": 1.0,
+  "igcs": 0.368,
+  "igcd": 0.345
+ }
+}

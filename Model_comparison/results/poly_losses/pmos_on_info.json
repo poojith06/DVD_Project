@@ -1,0 +1,22 @@
+{
+ "id": {
+  "loss": "huber",
+  "l2": 0.001,
+  "val_mae_dec": 0.0628
+ },
+ "ig": {
+  "loss": "l1",
+  "l2": 0.001,
+  "val_mae_dec": 0.04894
+ },
+ "is": {
+  "loss": "huber",
+  "l2": 0.001,
+  "val_mae_dec": 0.06158
+ },
+ "ib": {
+  "loss": "l1",
+  "l2": 0.001,
+  "val_mae_dec": 0.06467
+ }
+}

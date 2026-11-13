@@ -1,0 +1,18 @@
+{
+ "id": {
+  "kernel": "matern52",
+  "val_mae_dec": 0.04791
+ },
+ "ig": {
+  "kernel": "matern52",
+  "val_mae_dec": 0.54744
+ },
+ "is": {
+  "kernel": "matern52",
+  "val_mae_dec": 0.05408
+ },
+ "ib": {
+  "kernel": "matern52",
+  "val_mae_dec": 0.02705
+ }
+}

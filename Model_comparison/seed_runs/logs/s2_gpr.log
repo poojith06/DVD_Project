@@ -1,0 +1,14 @@
+  File "C:\Users\anees\anaconda3\Lib\site-packages\joblib\externals\loky\backend\context.py", line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[gpr] nmos_off fit   1368s | val median 2.42 0.00 2.83 0.76 | test median 2.56 0.00 2.58 0.71 | test p95 36.8 0.2 39.6 14.4 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.04272}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.00117}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.04051}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.01772}}
+[gpr] pmos_on  fit   1425s | val median 0.11 0.03 0.11 0.18 | test median 0.10 0.03 0.11 0.18 | test p95 1.9 0.3 1.6 1.3 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.00405}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.00034}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.0024}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.00154}}
+[gpr] pmos_off fit   1428s | val median 4.27 0.04 4.00 0.68 | test median 4.40 0.04 3.84 0.60 | test p95 45.3 1.5 73.7 14.2 | {'id': {'kernel': 'matern52', 'val_mae_dec': 0.04821}, 'ig': {'kernel': 'matern52', 'val_mae_dec': 0.00296}, 'is': {'kernel': 'matern52', 'val_mae_dec': 0.05033}, 'ib': {'kernel': 'matern52', 'val_mae_dec': 0.01572}}

@@ -1,0 +1,26 @@
+{
+ "id": {
+  "depth": 10,
+  "learning_rate": 1.0,
+  "loss": "linear",
+  "val_mae_dec": 0.08448
+ },
+ "ig": {
+  "depth": 10,
+  "learning_rate": 1.0,
+  "loss": "square",
+  "val_mae_dec": 0.08322
+ },
+ "is": {
+  "depth": 10,
+  "learning_rate": 1.0,
+  "loss": "linear",
+  "val_mae_dec": 0.08512
+ },
+ "ib": {
+  "depth": 10,
+  "learning_rate": 1.0,
+  "loss": "square",
+  "val_mae_dec": 0.12834
+ }
+}

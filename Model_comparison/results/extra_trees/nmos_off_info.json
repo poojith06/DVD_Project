@@ -1,0 +1,22 @@
+{
+ "id": {
+  "max_features": 1.0,
+  "min_samples_leaf": 1,
+  "val_mae_dec": 0.13629
+ },
+ "ig": {
+  "max_features": 1.0,
+  "min_samples_leaf": 1,
+  "val_mae_dec": 0.09331
+ },
+ "is": {
+  "max_features": 1.0,
+  "min_samples_leaf": 1,
+  "val_mae_dec": 0.13294
+ },
+ "ib": {
+  "max_features": 0.66,
+  "min_samples_leaf": 1,
+  "val_mae_dec": 0.05406
+ }
+}

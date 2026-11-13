@@ -1,0 +1,22 @@
+{
+ "id": {
+  "gamma": 0.02,
+  "alpha": 0.0001,
+  "val_mae_dec": 0.01806
+ },
+ "ig": {
+  "gamma": 0.01,
+  "alpha": 0.0001,
+  "val_mae_dec": 0.02715
+ },
+ "is": {
+  "gamma": 0.02,
+  "alpha": 0.0001,
+  "val_mae_dec": 0.01837
+ },
+ "ib": {
+  "gamma": 0.02,
+  "alpha": 0.0001,
+  "val_mae_dec": 0.03381
+ }
+}

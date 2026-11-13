@@ -1,0 +1,22 @@
+{
+ "id": {
+  "degree": 4,
+  "alpha": 0.01,
+  "val_mae_dec": 0.04781
+ },
+ "ig": {
+  "degree": 4,
+  "alpha": 0.01,
+  "val_mae_dec": 0.05306
+ },
+ "is": {
+  "degree": 4,
+  "alpha": 0.01,
+  "val_mae_dec": 0.047
+ },
+ "ib": {
+  "degree": 4,
+  "alpha": 0.01,
+  "val_mae_dec": 0.05138
+ }
+}

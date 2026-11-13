@@ -1,0 +1,18 @@
+{
+ "id": {
+  "num_leaves": 15,
+  "val_mae_dec": 0.07778
+ },
+ "ig": {
+  "num_leaves": 15,
+  "val_mae_dec": 0.02116
+ },
+ "is": {
+  "num_leaves": 15,
+  "val_mae_dec": 0.07469
+ },
+ "ib": {
+  "num_leaves": 15,
+  "val_mae_dec": 0.00967
+ }
+}
