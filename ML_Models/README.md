@@ -70,6 +70,23 @@ currents = load_surrogate("nmos_off").predict(df)   # df has the 12 input column
   saved (`leak_ml_supply_sum`) but fails badly for exactly that reason.
 - Error = (ML - SPICE) / SPICE, bias = median signed error, mean accuracy = 100 % - mean |error|.
 
+## Part C: CLA leakage (`evaluate_cla.py` -> `../PartC_results/`)
+
+The CLA leakage is the plain sum of the Part B ML gate leakages (spec steps 7-8, deliverable 8). Run Part B first,
+then point the script at its gate predictions:
+
+```bash
+python evaluate_gates.py --models-dir model_sets/gpr_on_resnet_off --out gate_results_resnet
+python evaluate_cla.py --predictions gate_results_resnet/gate_predictions.csv --out ../PartC_results/set_a_gpr_on_resnet_off
+```
+
+It parses the CLA netlist into a gate list (`cla3_gates.csv`), evaluates the logic of every input vector (checked
+against the 3-bit sum and the SPICE output voltages), looks up each gate's ML leakage by (gate type, input bits,
+corner), sums them and compares with `cla3.csv`. Outputs: `cla3_predictions.csv` (every vector and corner),
+`cla3_results.csv` (overall and per-vector SPICE median, ML median, bias, median and p95 error), `cla3_parity.png`
+and `summary.csv`. `leak_ceiling` is the same sum built from the Part B SPICE gate leakages: it shows what the
+summing itself costs (error analysis only, not the headline result).
+
 ## Component labels (`components_mlp/component_data/`)
 
 `<case>_components.csv` holds, for every dataset row, the BSIM4 component currents read in ngspice.

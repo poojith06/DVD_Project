@@ -1,0 +1,34 @@
+instance,type,inputs,pin_A,pin_B,output
+x1,nand2,a0 b0,a0,b0,g0_bar
+x3,nand2,a1 b1,a1,b1,g1_bar
+x5,nand2,a2 b2,a2,b2,g2_bar
+x7,nand2,a0 b0,a0,b0,p0_n1
+x11,nand2,a1 b1,a1,b1,p1_n1
+x15,nand2,a2 b2,a2,b2,p2_n1
+x2,inv,g0_bar,g0_bar,,g0
+x4,inv,g1_bar,g1_bar,,g1
+x6,inv,g2_bar,g2_bar,,g2
+x8,nand2,a0 p0_n1,a0,p0_n1,p0_n2
+x9,nand2,b0 p0_n1,b0,p0_n1,p0_n3
+x12,nand2,a1 p1_n1,a1,p1_n1,p1_n2
+x13,nand2,b1 p1_n1,b1,p1_n1,p1_n3
+x16,nand2,a2 p2_n1,a2,p2_n1,p2_n2
+x17,nand2,b2 p2_n1,b2,p2_n1,p2_n3
+x10,nand2,p0_n2 p0_n3,p0_n2,p0_n3,s0
+x14,nand2,p1_n2 p1_n3,p1_n2,p1_n3,p1
+x18,nand2,p2_n2 p2_n3,p2_n2,p2_n3,p2
+x19,nand2,p1 g0,p1,g0,t1_bar
+x26,nand2,p1 g0,p1,g0,s1_n1
+x21,nand2,p2 g1,p2,g1,t2_bar
+x23,and2,p2 p1,p2,p1,p21
+x20,nand2,g1_bar t1_bar,g1_bar,t1_bar,c2
+x27,nand2,p1 s1_n1,p1,s1_n1,s1_n2
+x28,nand2,g0 s1_n1,g0,s1_n1,s1_n3
+x22,nand2,g2_bar t2_bar,g2_bar,t2_bar,t3
+x24,and2,p21 g0,p21,g0,t4
+x30,nand2,p2 c2,p2,c2,s2_n1
+x29,nand2,s1_n2 s1_n3,s1_n2,s1_n3,s1
+x25,or2,t3 t4,t3,t4,cout
+x31,nand2,p2 s2_n1,p2,s2_n1,s2_n2
+x32,nand2,c2 s2_n1,c2,s2_n1,s2_n3
+x33,nand2,s2_n2 s2_n3,s2_n2,s2_n3,s2

@@ -120,7 +120,16 @@ def predict_gate(gate: str, df: pd.DataFrame, surrogates: dict) -> tuple[np.ndar
         for k, node in enumerate(nodes):
             if node == "vdd":
                 supply_sum += currents[:, k]
+    return supply_kcl(v, devices), supply_sum
 
+
+def supply_kcl(v: dict, devices: list) -> np.ndarray:
+    """Current drawn from VDD by Kirchhoff's current law on the super-node S (see predict_gate).
+
+    v: node name -> voltage per row; devices: [(polarity, (d, g, s, b) node names, on mask, (rows, 4) currents
+    id, ig, is, ib positive into the terminal)]. Used with ML currents here and with SPICE currents in the checks.
+    """
+    n = len(v["vdd"])
     # Super-node S per row: grow from vdd through ON PMOS (drain <-> source).
     in_s = {node: np.zeros(n, bool) for node in v}
     in_s["vdd"][:] = True
@@ -139,7 +148,7 @@ def predict_gate(gate: str, df: pd.DataFrame, surrogates: dict) -> tuple[np.ndar
         # any other transistor: add its currents into the terminals that sit on S
         for k, node in enumerate(nodes):
             kcl += np.where(~inside & in_s[node], currents[:, k], 0.0)
-    return kcl, supply_sum
+    return kcl
 
 
 def input_label(row) -> str:
