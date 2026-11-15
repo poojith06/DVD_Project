@@ -1,0 +1,7 @@
+* PMOS OFF - subcircuit version of pmos_off_ngspice.cir, for use inside gate netlists (Part B / Part C)
+* Same device as the dataset netlist:  M1 d g s b pmos L=22n W=...   (terminals d g s b, width as a parameter)
+* The OFF state comes from the gate voltage applied by the gate netlist; the device itself is the same as in pmos_off_ngspice.cir.
+.include 22nm_HP.pm
+.subckt pmos_off d g s b w=44n
+M1 d g s b pmos L=22n W={w}
+.ends pmos_off

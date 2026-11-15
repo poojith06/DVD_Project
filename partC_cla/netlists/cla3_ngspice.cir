@@ -1,0 +1,117 @@
+* Part C - 3-bit CLA leakage, dataset generation entirely inside ngspice
+.options gmin=1e-18 abstol=1e-18 reltol=1e-6 vntol=1e-9
+.include ../../model/22nm_HP.pm
+.include cla3.sub
+
+* supply and inputs (each primary input has its own source)
+Vsup vdd 0 dc 1
+Va0 a0 0 dc 0
+Va1 a1 0 dc 0
+Va2 a2 0 dc 0
+Vb0 b0 0 dc 0
+Vb1 b1 0 dc 0
+Vb2 b2 0 dc 0
+* 3-bit CLA (cla3.sub)
+xcla cout s2 s1 s0 a2 a1 a0 b2 b1 b0 vdd 0 CLA3
+
+.control
+set rndseed=16
+let ncorner = 200                      $ number of PVT corners
+echo "corner,vdd,temp,n_vth0,n_toxe,n_ndep,n_u0,n_xj,p_vth0,p_toxe,p_ndep,p_u0,p_xj" > ../data/corners.csv
+echo "corner,A,B,A2,A1,A0,B2,B1,B0,vdd,temp,n_vth0,n_toxe,n_ndep,n_u0,n_xj,p_vth0,p_toxe,p_ndep,p_u0,p_xj,leak,v_g0_bar,v_g0,v_g1_bar,v_g1,v_g2_bar,v_g2,v_p1,v_p2,v_t1_bar,v_c2,v_t2_bar,v_t3,v_p21,v_t4,v_s0,v_s1,v_s2,v_cout" > ../data/cla3.csv
+let c = 0
+while c < ncorner
+  * ---- assigned / nominal values (from 22nm_HP.pm) ----
+  let vdd_nom = 1
+  let n_vth0_nom = 0.50308
+  let n_toxe_nom = 1.05e-9
+  let n_ndep_nom = 5.5e18
+  let n_u0_nom = 0.04
+  let n_xj_nom = 7.2e-9
+  let p_vth0_nom = -0.4606
+  let p_toxe_nom = 1.1e-9
+  let p_ndep_nom = 4.4e18
+  let p_u0_nom = 0.0095
+  let p_xj_nom = 7.2e-9
+  * ---- draw one random corner (sunif(0) is uniform in -1..1), VDD first ----
+  let vdd = vdd_nom*(1 + 0.1*sunif(0))
+  let t = 42.5 + 82.5*sunif(0)
+  let n1 = n_vth0_nom*(1 + 0.1*sunif(0))
+  let n2 = n_toxe_nom*(1 + 0.1*sunif(0))
+  let n3 = n_ndep_nom*(1 + 0.1*sunif(0))
+  let n4 = n_u0_nom*(1 + 0.1*sunif(0))
+  let n5 = n_xj_nom*(1 + 0.1*sunif(0))
+  let p1 = p_vth0_nom*(1 + 0.1*sunif(0))
+  let p2 = p_toxe_nom*(1 + 0.1*sunif(0))
+  let p3 = p_ndep_nom*(1 + 0.1*sunif(0))
+  let p4 = p_u0_nom*(1 + 0.1*sunif(0))
+  let p5 = p_xj_nom*(1 + 0.1*sunif(0))
+  echo "$&c,$&vdd,$&t,$&n1,$&n2,$&n3,$&n4,$&n5,$&p1,$&p2,$&p3,$&p4,$&p5" >> ../data/corners.csv
+  * ---- apply the corner: all NMOS share one set, all PMOS share another ----
+  * one parameter per altermod line (ngspice applies only the first parameter on a line)
+  alter vsup dc = $&vdd
+  altermod nmos vth0 = $&n1
+  altermod nmos toxe = $&n2
+  altermod nmos ndep = $&n3
+  altermod nmos u0 = $&n4
+  altermod nmos xj = $&n5
+  altermod pmos vth0 = $&p1
+  altermod pmos toxe = $&p2
+  altermod pmos ndep = $&p3
+  altermod pmos u0 = $&p4
+  altermod pmos xj = $&p5
+  option temp = $&t
+  * ---- every input combination: A = 0..7, B = 0..7 (bit 0 -> 0 V, bit 1 -> VDD) ----
+  let ia = 0
+  while ia < 8
+    let ka0 = ia - 2*floor(ia/2)
+    let ka1 = floor(ia/2) - 2*floor(ia/4)
+    let ka2 = floor(ia/4)
+    let va = ka0*vdd
+    alter va0 dc = $&va
+    let va = ka1*vdd
+    alter va1 dc = $&va
+    let va = ka2*vdd
+    alter va2 dc = $&va
+    let ib = 0
+    while ib < 8
+      let kb0 = ib - 2*floor(ib/2)
+      let kb1 = floor(ib/2) - 2*floor(ib/4)
+      let kb2 = floor(ib/4)
+      let vb = kb0*vdd
+      alter vb0 dc = $&vb
+      let vb = kb1*vdd
+      alter vb1 dc = $&vb
+      let vb = kb2*vdd
+      alter vb2 dc = $&vb
+      * ---- simulate and append one CSV row ----
+      op
+      let leak = -i(vsup)               $ total leakage drawn from the VDD supply
+      let vg0b = v(xcla.g0_bar)
+      let vg0  = v(xcla.g0)
+      let vg1b = v(xcla.g1_bar)
+      let vg1  = v(xcla.g1)
+      let vg2b = v(xcla.g2_bar)
+      let vg2  = v(xcla.g2)
+      let vp1  = v(xcla.p1)
+      let vp2  = v(xcla.p2)
+      let vt1b = v(xcla.t1_bar)
+      let vc2  = v(xcla.c2)
+      let vt2b = v(xcla.t2_bar)
+      let vt3  = v(xcla.t3)
+      let vp21 = v(xcla.p21)
+      let vt4  = v(xcla.t4)
+      let vs0  = v(s0)
+      let vs1  = v(s1)
+      let vs2  = v(s2)
+      let vco  = v(cout)
+      echo "$&c,$&ia,$&ib,$&ka2,$&ka1,$&ka0,$&kb2,$&kb1,$&kb0,$&vdd,$&t,$&n1,$&n2,$&n3,$&n4,$&n5,$&p1,$&p2,$&p3,$&p4,$&p5,$&leak,$&vg0b,$&vg0,$&vg1b,$&vg1,$&vg2b,$&vg2,$&vp1,$&vp2,$&vt1b,$&vc2,$&vt2b,$&vt3,$&vp21,$&vt4,$&vs0,$&vs1,$&vs2,$&vco" >> ../data/cla3.csv
+      destroy all
+      let ib = ib + 1
+    end
+    let ia = ia + 1
+  end
+  let c = c + 1
+end
+.endc
+.end

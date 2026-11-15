@@ -1,0 +1,81 @@
+Part B (3,600 rows): mean |error| (%) and median signed error (%) by condition
+            variable          range  rows  mean_abs_error_pct_ml  bias_pct_ml
+         temperature (-40.001, 0.0]   864                   1.50         0.32
+         temperature    (0.0, 40.0]   900                   1.14         0.30
+         temperature   (40.0, 85.0]   882                   0.98        -0.08
+         temperature  (85.0, 125.0]   954                   0.92         0.08
+  NMOS vth0 quartile    Q1 (lowest)   900                   1.34        -0.13
+  NMOS vth0 quartile             Q2   900                   1.12         0.00
+  NMOS vth0 quartile             Q3   900                   0.98         0.11
+  NMOS vth0 quartile   Q4 (highest)   900                   1.08         0.54
+PMOS |vth0| quartile    Q1 (lowest)   900                   1.25         0.07
+PMOS |vth0| quartile             Q2   900                   1.09         0.04
+PMOS |vth0| quartile             Q3   900                   1.16         0.30
+PMOS |vth0| quartile   Q4 (highest)   900                   1.02         0.08
+         VDD tercile        low VDD  1206                   0.84         0.07
+         VDD tercile        mid VDD  1206                   1.00         0.06
+         VDD tercile       high VDD  1188                   1.55         0.36
+
+Part C (12,800 rows): ML and ceiling
+            variable          range  rows  mean_abs_error_pct_ml  bias_pct_ml  mean_abs_error_pct_ceiling  bias_pct_ceiling
+         temperature (-40.001, 0.0]  3072                   1.16         0.26                        0.56             -0.40
+         temperature    (0.0, 40.0]  3200                   0.99         0.44                        0.48             -0.37
+         temperature   (40.0, 85.0]  3136                   1.03        -0.54                        0.89             -0.78
+         temperature  (85.0, 125.0]  3392                   0.83        -0.56                        1.38             -1.22
+  NMOS vth0 quartile    Q1 (lowest)  3200                   1.19        -0.90                        1.20             -1.04
+  NMOS vth0 quartile             Q2  3200                   0.90        -0.51                        0.98             -0.90
+  NMOS vth0 quartile             Q3  3200                   0.91        -0.11                        0.72             -0.54
+  NMOS vth0 quartile   Q4 (highest)  3200                   0.99         0.63                        0.46             -0.34
+PMOS |vth0| quartile    Q1 (lowest)  3200                   1.22         0.05                        0.74             -0.58
+PMOS |vth0| quartile             Q2  3200                   0.99        -0.19                        0.92             -0.76
+PMOS |vth0| quartile             Q3  3200                   0.94         0.04                        0.89             -0.72
+PMOS |vth0| quartile   Q4 (highest)  3200                   0.84        -0.48                        0.81             -0.72
+         VDD tercile        low VDD  4288                   0.82        -0.46                        0.70             -0.55
+         VDD tercile        mid VDD  4288                   0.98        -0.20                        0.80             -0.65
+         VDD tercile       high VDD  4224                   1.20         0.31                        1.01             -0.82
+
+Part B cases from least to most accurate (mean accuracy %):
+ gate inputs  mean_accuracy_pct  median_error_pct  p95_error_pct  max_error_pct  bias_pct
+  inv      0              98.37              1.24           4.35           8.10     -0.73
+ nor2     00              98.38              1.24           4.34           8.08     -0.73
+  or2     11              98.39              1.20           4.34           8.06     -0.72
+nand2     01              98.57              1.09           4.29           7.46     -0.13
+  inv      1              98.58              1.20           3.50           6.99      1.17
+nand2     11              98.59              1.19           3.48           6.76      1.14
+ and2     00              98.59              1.19           3.48           6.92      1.16
+ and2     10              98.77              0.91           3.27           5.54      0.80
+ nor2     01              98.79              0.96           3.50           5.44      0.69
+ and2     11              98.95              0.78           2.88           5.06      0.46
+  or2     01              98.99              0.81           2.88           4.05      0.08
+  or2     00              99.01              0.80           2.74           3.63      0.03
+  or2     10              99.02              0.74           2.75           6.01     -0.39
+ and2     01              99.05              0.82           2.74           4.20      0.06
+ nor2     10              99.23              0.64           1.98           2.91      0.44
+nand2     10              99.44              0.34           1.83           7.82     -0.08
+ nor2     11              99.46              0.42           1.42           2.34     -0.12
+nand2     00              99.49              0.39           1.29           3.17     -0.03
+
+Part B worst rows:
+ gate inputs  corner   temp    vdd  n_vth0  p_vth0  leak_spice   leak_ml  error_pct
+  inv      0      98  -11.1   1.06  0.4837 -0.4244   2.039e-08 1.874e-08     -8.104
+ nor2     00      98  -11.1   1.06  0.4837 -0.4244   4.093e-08 3.762e-08     -8.078
+  or2     11      98  -11.1   1.06  0.4837 -0.4244   2.051e-08 1.886e-08     -8.056
+nand2     10     151 -35.88 0.9997  0.4601 -0.4486   6.016e-09 6.486e-09      7.823
+nand2     01      98  -11.1   1.06  0.4837 -0.4244   4.656e-08 4.308e-08     -7.459
+nand2     01      34  -31.7  1.028  0.4593  -0.473   6.413e-08 5.942e-08     -7.351
+nand2     01      22  -15.2  1.092  0.4661 -0.4296   7.829e-08 7.255e-08      -7.33
+  inv      0      22  -15.2  1.092  0.4661 -0.4296   3.462e-08 3.215e-08     -7.122
+
+Part C worst rows:
+vector  corner  temp   vdd  leak_spice   leak_ml  error_ml_pct  error_ceiling_pct
+   1+7      39 121.7 1.092   2.273e-05 2.365e-05         4.024             -1.889
+   5+3      39 121.7 1.092   2.258e-05 2.346e-05         3.913             -1.995
+   3+5      39 121.7 1.092   2.262e-05 2.346e-05         3.696               -2.2
+   5+3     192 12.87 1.062   8.527e-06 8.834e-06         3.606            -0.1454
+   7+1     192 12.87 1.062   8.502e-06 8.808e-06         3.599            -0.1756
+   1+7     192 12.87 1.062   8.553e-06 8.861e-06         3.597            -0.1319
+   3+5     192 12.87 1.062   8.528e-06 8.834e-06         3.589            -0.1618
+   7+1      39 121.7 1.092   2.247e-05 2.327e-05         3.583             -2.308
+
+rows with |error| > 5 %: Part B 35 of 3600; Part C 0 of 12800
+rows with |error| > 1 %: Part B 1529; Part C 5172

@@ -1,0 +1,15 @@
+simulating 200 netlists ...
+max over the 20 rows (relative differences; node voltages in V):
+               rel_id  rel_ig  rel_is  rel_ib  abs_ig_A  abs_ib_A  rel_leak  max_node_diff_V
+part file                                                                                   
+A    nmos_off 1.9e-06 4.7e-06 1.2e-06 5.0e-06   5.0e-16   1.0e-18       NaN              NaN
+     nmos_on  2.2e-06 1.3e-05 2.3e-06 2.9e-06   5.0e-16   2.0e-16       NaN              NaN
+     pmos_off 2.2e-06 3.0e-06 1.7e-06 4.0e-06   5.0e-21   4.0e-19       NaN              NaN
+     pmos_on  3.3e-06 2.0e-06 3.8e-06 0.0e+00   5.0e-15   0.0e+00       NaN              NaN
+B    and2         NaN     NaN     NaN     NaN       NaN       NaN   3.0e-06          5.0e-06
+     inv          NaN     NaN     NaN     NaN       NaN       NaN   3.9e-06          5.0e-06
+     nand2        NaN     NaN     NaN     NaN       NaN       NaN   3.4e-06          5.0e-06
+     nor2         NaN     NaN     NaN     NaN       NaN       NaN   2.9e-06          5.0e-06
+     or2          NaN     NaN     NaN     NaN       NaN       NaN   3.3e-06          5.0e-06
+C    cla3         NaN     NaN     NaN     NaN       NaN       NaN   2.7e-06          5.0e-06
+failed simulations: 0

@@ -1,0 +1,12 @@
+nmos_on                          rows    5  max rel diff 0.00e+00  (inputs 0.0e+00)  id=0.0e+00 ig=0.0e+00 is=0.0e+00 ib=0.0e+00
+nmos_off                         rows    5  max rel diff 0.00e+00  (inputs 0.0e+00)  id=0.0e+00 ig=0.0e+00 is=0.0e+00 ib=0.0e+00
+pmos_on                          rows    5  max rel diff 0.00e+00  (inputs 0.0e+00)  id=0.0e+00 ig=0.0e+00 is=0.0e+00 ib=0.0e+00
+pmos_off                         rows    5  max rel diff 0.00e+00  (inputs 0.0e+00)  id=0.0e+00 ig=0.0e+00 is=0.0e+00 ib=0.0e+00
+pmos_off(readout_check netlist)  rows    5  max rel diff 0.00e+00  (inputs 0.0e+00)  id=0.0e+00 ig=0.0e+00 is=0.0e+00 ib=0.0e+00
+inv                              rows    6  max rel diff 0.00e+00  (inputs 0.0e+00)  leak=0.0e+00 v_out=0.0e+00
+nand2                            rows   12  max rel diff 0.00e+00  (inputs 0.0e+00)  leak=0.0e+00 v_out=0.0e+00 v_int=0.0e+00
+nor2                             rows   12  max rel diff 0.00e+00  (inputs 0.0e+00)  leak=0.0e+00 v_out=0.0e+00 v_int=0.0e+00
+and2                             rows   12  max rel diff 0.00e+00  (inputs 0.0e+00)  leak=0.0e+00 v_out=0.0e+00 v_int=0.0e+00
+or2                              rows   12  max rel diff 0.00e+00  (inputs 0.0e+00)  leak=0.0e+00 v_out=0.0e+00 v_int=0.0e+00
+cla3                             rows  192  max rel diff 0.00e+00  (inputs 0.0e+00)  leak=0.0e+00 v_cout=0.0e+00 v_s0=0.0e+00 v_g0=0.0e+00 v_t4=0.0e+00
+RESIM: PASS

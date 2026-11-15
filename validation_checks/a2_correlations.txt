@@ -1,0 +1,2 @@
+nmos_on              rows=10000  toxe~log|ig| -0.375  vth0~log|id| -0.072  ndep~log|id| -0.013  u0~log|id| +0.005  xj~log|id| +0.000  xj~log|ib| +0.010
+nmos_off             rows=10000  toxe~log|ig| -0.579  vth0~log|id| -0.099  ndep~log|id| +0.007  u0~log|id| -0.004  xj~log|id| -0.018  xj~log|ib| +0.008

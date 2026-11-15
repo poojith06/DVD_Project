@@ -1,0 +1,58 @@
+\section{Transistor Models}\label{sec:models}
+
+\subsection{Inputs, targets and signs}\label{sec:models:io}
+The inputs are the ten varying quantities (vdd, temp, $W$, $V_d$, $V_s$, vth0, toxe, ndep, u0, xj; $V_g$ and $V_b$ are fixed by the case) plus ten physics features, standardised on the training split: $V_{ds}$, $|V_{ds}|$, the gate-source and body-source voltages relative to the \emph{effective source} (lower terminal for NMOS, higher for PMOS), $1/T$, the subthreshold term $(|V_{gs}|-|V_{th0}|)/V_T$, the oxide fields $|V_g-V_d|/t_{ox}$ and $|V_g-V_s|/t_{ox}$, $\log_{10}W$ and $\log_{10}(1-e^{-|V_{ds}|/V_T})$.
+The target is $\log_{10}|I|$ of each terminal current (floor $10^{-18}$\,A $=$ \texttt{abstol}), so the models span 12 decades. Signs are restored afterwards: in the ON cases $\operatorname{sign}(i_d)=\operatorname{sign}(V_d-V_s)$; in the OFF cases the effective drain has a fixed sign and the sign of the effective source current comes from a gradient-boosting classifier that also sees the KCL margin; $i_g$ and $i_b$ use a fixed sign or a classifier if their sign changes. The error of a prediction is the relative error $|{\hat I}-I|/|I|$, so a wrong sign costs at least 100\,\%.
+% src: ml/pipeline.py (build_features, SignModel, relative_error_percent)
+
+\subsection{Model types}\label{sec:models:types}
+Four types are compared. All networks use the Huber loss ($\delta=0.05$ decades~\cite{huber}) on the standardised target, AdamW~\cite{adamw} (learning rate $10^{-3}$, weight decay $10^{-4}$), a cosine schedule, batch size 128, 500 epochs, and keep the epoch with the lowest validation loss.
+\textbf{ResNet MLP}~\cite{resnet}: Linear(20$\rightarrow$256), residual blocks $h\leftarrow h+W_2\,\mathrm{SiLU}(W_1\,\mathrm{SiLU}(h))$ (3 blocks by default), one network per output group ($i_d$ and $i_s$ together, $i_g$, $i_b$).
+\textbf{Hybrid}: a closed-form compact model (EKV channel current~\cite{ekv} with DIBL and body effect, gate tunnelling, reverse junction leakage, GIDL; 31 fitted constants for NMOS ON) fitted to $\log_{10}|I|$ by least squares~\cite{scipy}, plus a 256-128-64 SiLU MLP per group for the residual.
+\textbf{GPR}~\cite{rasmussen}: an exact Gaussian process per current with an ARD RBF or Mat\'ern-5/2 kernel chosen on the validation MAE; hyper-parameters by marginal likelihood on 2,000 random training rows (Adam~\cite{adam}, 300 steps, float64), then conditioned on all 8,000 rows.
+\textbf{PINN}~\cite{pinn}: a 256-128-64 SiLU MLP per group with the Huber loss plus a Kirchhoff penalty on the signed currents, a monotonicity penalty (derivatives with respect to $W$, toxe, $|V_{th0}|$ and $T$ of verified sign) and an EKV channel-current prior; five physics variants are trained and the best per group on validation is kept.
+% src: ml/models.py, results/analysis/report_numbers/model_facts.txt
+
+\ifexpFirstModels
+\subsection{Earlier model set, benchmark and the components model}\label{sec:models:first}
+Before fixing the final types, 29 regression model types (linear and kernel models, tree ensembles and boosting, MLP variants, GPR, a KAN, an FT-transformer, a mixture of experts, an analytical model, hybrids, a PINN and a components model) were benchmarked on a first split (70:15:15, seed 42) with identical features, targets, signs and metrics, and five of them were re-trained with three seeds; the run-to-run standard deviation of a test median reaches 0.40 (ResNet) and 0.37 (GPR), so differences of 0.1--0.2 in a single run are within noise. The first model set (components MLP, GPR, hybrid, ResNet) is kept in the repository archive and appears below only where labelled.
+In that set the components MLP was the best OFF model (mean validation median error 0.11\,\% for NMOS OFF against 0.33\,\% for the best other type, 0.19\,\% against 0.42\,\% for PMOS OFF). It predicts each BSIM4 current component with its own network and rebuilds the terminal currents with the BSIM4 formulas, but its labels are the \emph{internal} component currents of the simulator, which are not among the 16 dataset columns. The final set therefore excludes it and uses the physics-informed network as fourth type. This costs accuracy on the validation set (the OFF models become two to three times less accurate on average), yet the gate- and circuit-level results of the compliant set are better than those with the components MLP: with GPR for ON and the components MLP for OFF, the first set reaches only 96.86\,\% (gates) and 96.27\,\% (circuit), with a worst row of 19.17\,\%, against 98.58\,\% and 98.80\,\% with GPR ON and ResNet OFF.
+% src: archive/model_benchmark/results/summary_validation.csv, archive/model_benchmark/seed_runs/summary_mean_std.csv, validation_checks/d1_validation_table.csv, results/phase2_comparison/comparison.csv
+\fi
+
+\subsection{Final models: 80:10:10 split and four compliant types}\label{sec:models:final}
+The final set trains GPR, hybrid, ResNet and PINN on the four cases with an 80:10:10 split (8,000 / 1,000 / 1,000 rows, seed 42), using only the four dataset currents as targets. Per case, the type with the lowest mean validation median error over the four currents is chosen (the mean 95th percentile breaks ties); the test set is not used for any choice. Table~\ref{tab:modelcomp} compares the four types on the validation set, Table~\ref{tab:chosen} reports the chosen models on the test set, and the predicted-versus-SPICE plots are in Fig.~\ref{fig:parity} (Appendix).
+Validation picks the hybrid model for NMOS ON, ResNet for NMOS OFF and PMOS OFF, and GPR for PMOS ON. For NMOS ON, hybrid, GPR and ResNet are tied (0.185, 0.186 and 0.186\,\% mean median error), so that choice is not significant. GPR is best where the physics is smooth (ON cases) and poor in the OFF cases (mean median error 1.37 and 2.12\,\%, 95th percentile above 22\,\%), where the current spans many decades and changes sign.
+% src: results/partA/model_comparison_validation.csv, results/partA/chosen_models_test.csv
+\begin{table*}[t]
+\caption{Model comparison on the validation set (80:10:10). $R^2$ is computed on $\log_{10}|I|$ per current and averaged; median and 95th percentile are relative errors in \%, averaged over $i_d,i_g,i_s,i_b$. Bold: model chosen by the lowest mean median error.}
+\label{tab:modelcomp}
+\centering\footnotesize
+\input{tables/t_modelcomp}
+\end{table*}
+\begin{table*}[t]
+\caption{Chosen models on the test set: median and 95th-percentile relative error (\%) per current.}
+\label{tab:chosen}
+\centering\footnotesize
+\input{tables/t_chosen}
+\end{table*}
+
+\textbf{A near-rail validation metric, added after the gate analysis.} The gate analysis (Sec.~\ref{sec:errors}) showed that the gate-level error is concentrated in OFF transistors with a terminal at each rail. We therefore added a second \emph{validation} metric, the mean error of $i_d$ and $i_s$ on the validation rows with $V_d$ and $V_s$ together within 0.2\,V of a rail (90 and 92 rows), and tried a loss weight $w(r)=1+A\,e^{-r/\tau}$ ($\tau=\SI{50}{\milli\volt}$, $r$ the summed distance of $V_d$ and $V_s$ to the nearer rail). With a rule fixed beforehand (lowest near-rail error among weights whose normal validation score is within 10\,\% of the unweighted one), validation chose $A=0$: weights 10 and 30 raised the normal score from 0.353 to 0.533 and 0.523\,\% and did not reduce the near-rail error of both cases (1.623\,\% unweighted, 1.684 and 1.824\,\% weighted). The final models are trained without the weight. The metric entered after the gate results were known, but every selection used validation data only; Part~B and Part~C data were never used to train or to choose.
+% src: results/partA/rail_weight_tuning.csv, ml/choose_weight.py
+
+\subsection{Tuning the ResNet for the OFF cases}\label{sec:models:tuning}
+All remaining gate error comes from the OFF transistors, so only the two ResNet OFF models were tuned: seven single changes of the defaults (3 blocks, width 256, 500 epochs, learning rate $10^{-3}$, batch 128, Huber $\delta=0.05$, weight decay $10^{-4}$), each trained on both OFF cases (Table~\ref{tab:tuning}). The rule was fixed before the runs: lowest near-rail validation error of $i_d$ and $i_s$ among settings whose normal validation score is at most 5\,\% worse than the default (limit 0.3705). Five residual blocks won (near-rail 1.162 against 1.623\,\%, score 0.326 against 0.353\,\%); width 512 and 1000 epochs gave a better score but a worse near-rail error, and a lower learning rate failed the limit. The tuning moved the Part~B mean accuracy from 98.89\,\% to 98.87\,\% and the Part~C accuracy from 98.89\,\% to 99.00\,\%.
+% src: results/partA/resnet_tuning.csv, results/reference_before_tuning/evaluate_gates.log, evaluate_cla.log, results/partB/gate_predictions.csv, results/partC/cla3_results.csv
+\begin{table}[t]
+\caption{ResNet tuning for the OFF cases (validation). Score: mean median error (\%); near-rail: mean error of $i_d,i_s$ on near-rail validation rows (\%); the rule selects blocks=5.}
+\label{tab:tuning}
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\fitcol{\input{tables/t_tuning}}
+\end{table}
+
+\ifexpSymmetry
+\subsection{Drain--source symmetry of the OFF devices}\label{sec:models:symmetry}
+A MOSFET is symmetric under exchange of drain and source, which would allow a preprocessing that orders the terminals. In SPICE the ON devices are symmetric (mirror error at most 0.31\,\%) but the OFF devices are not: the dominant PMOS OFF current changed by up to 171\,\% in 15 random rows. Equal explicit junction geometry (\texttt{AD}=\texttt{AS}, \texttt{PD}=\texttt{PS}) or \texttt{geomod}$=0$ removes the asymmetry exactly, so the cause is the default junction geometry of an instance without \texttt{AD/AS/PD/PS}. It matters only for small currents; at gate operating points the device is symmetric to $\num{2.0e-5}$ (NMOS) and $\num{4.6e-5}$ (PMOS). All data share the same default geometry, so \emph{no symmetry preprocessing is used}.
+% src: validation_checks/sym_cause.csv, validation_checks/sym_check.txt, validation_checks/sym_cause.txt
+\fi

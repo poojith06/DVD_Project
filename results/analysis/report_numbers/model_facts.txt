@@ -1,0 +1,26 @@
+Final models (results/models)
+  nmos_on: HybridAnalyticMLPModel; analytical model with 31 fitted constants; MLP groups ['id+is', 'ig', 'ib']; hidden widths [256, 128, 64, 2]; network parameters 142916
+      sign model: classifiers for [1, 3] (ig, ib), source classifier: False
+  nmos_off: ResNetMLPModel; width 256, residual blocks 5; groups ['id+is', 'ig', 'ib']; network parameters 1990916
+      sign model: classifiers for [1, 3] (ig, ib), source classifier: True
+  pmos_on: GPRModel; kernels per current (id, ig, is, ib): ['rbf', 'matern52', 'matern52', 'matern52']; training rows 8000
+      sign model: classifiers for [1, 3] (ig, ib), source classifier: False
+  pmos_off: ResNetMLPModel; width 256, residual blocks 5; groups ['id+is', 'ig', 'ib']; network parameters 1990916
+      sign model: classifiers for [1, 3] (ig, ib), source classifier: True
+
+Training time (seconds, validation_metrics.csv of each run) - runs/final (all 4 types, 80:10:10)
+case                  nmos_off  nmos_on  pmos_off  pmos_on
+model                                                     
+gpr                     2997.0   5415.0    1345.0   1343.0
+hybrid_analytic_mlp      663.0    730.0     384.0    418.0
+pinn                     338.0    373.0     318.0    420.0
+resnet_mlp               700.0    905.0     500.0    481.0
+resnet_mlp (rn_b5)      1071.0      NaN     712.0      NaN
+resnet_mlp (tune_A0)    4293.0      NaN    1289.0      NaN
+(times depend on what else was running on the GPU / CPU at the time; the runs shared the machine)
+
+Split sizes (80:10:10, seed 42):
+  nmos_on: 10000 rows -> train 8000, validation 1000, test 1000
+  nmos_off: 10000 rows -> train 8000, validation 1000, test 1000
+  pmos_on: 10000 rows -> train 8000, validation 1000, test 1000
+  pmos_off: 10000 rows -> train 8000, validation 1000, test 1000

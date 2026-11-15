@@ -1,0 +1,29 @@
+1. Kirchhoff check, id + ig + is + ib per row
+    case  rows  median_abs_sum_A  max_abs_sum_A  median_rel  p95_rel  max_rel  rows_rel_gt_1e-3  median_max_terminal_I_A
+ nmos_on 10000          8.18e-12       9.87e-10    5.13e-07 4.22e-06 2.84e-02                15                 2.66e-05
+nmos_off 10000          2.59e-17       8.29e-13    8.50e-07 3.87e-06 8.96e-06                 0                 3.00e-11
+ pmos_on 10000          4.20e-14       1.00e-10    4.85e-09 1.57e-06 1.36e-02                18                 1.52e-05
+pmos_off 10000          1.00e-19       9.16e-13    1.14e-06 5.52e-06 9.91e-06                 0                 1.47e-13
+
+   PMOS OFF residual vs size of the largest terminal current:
+     max|I| in [1e-15, 1e-14) A:    39 rows, median |sum| 3.8e-21 A, max |sum| 1.2e-20 A, median rel 3.8e-07, max rel 1.2e-06
+     max|I| in [1e-14, 1e-12) A:  6276 rows, median |sum| 4.0e-20 A, max |sum| 1.3e-18 A, median rel 1.4e-06, max rel 9.9e-06
+     max|I| in [1e-12, 1e-09) A:  3054 rows, median |sum| 1.1e-17 A, max |sum| 9.6e-16 A, median rel 8.8e-07, max rel 9.2e-06
+     max|I| in [1e-09, 1e+00) A:   631 rows, median |sum| 3.9e-15 A, max |sum| 9.2e-13 A, median rel 8.0e-07, max rel 8.8e-06
+     rows with |sum| > 1e-15 A: 514; with |sum| > 1e-16 A: 1222
+
+2. Trends (Spearman: monotonic correlation of log10 I with the parameter; ratio: last / first bin median;
+   controlled effect: change of log10 I (decades) for the stated step, other inputs held fixed)
+                                                         plot     case  spearman  binned_median_first_bin_A  binned_median_last_bin_A  ratio_last_over_first  controlled_effect_decades_per_100C  controlled_effect_decades_per_50mV  controlled_effect_decades_per_0.1nm  rows
+                                   OFF current vs temperature nmos_off     0.172                   1.67e-11                   3.7e-11                   2.21                               0.386                                 NaN                                  NaN   NaN
+                                   OFF current vs temperature pmos_off     0.397                   1.32e-14                  3.08e-12                    233                                1.25                                 NaN                                  NaN   NaN
+                                        OFF current vs |vth0| nmos_off   -0.0822                   3.07e-11                  1.72e-11                   0.56                                 NaN                              -0.138                                  NaN   NaN
+                                        OFF current vs |vth0| pmos_off   -0.0913                   2.65e-13                  3.44e-14                   0.13                                 NaN                              -0.304                                  NaN   NaN
+                                                 |ig| vs toxe  nmos_on    -0.375                   6.53e-11                  3.24e-12                 0.0496                                 NaN                                 NaN                               -0.705   NaN
+                                                 |ig| vs toxe nmos_off    -0.602                   8.06e-11                  2.88e-12                 0.0357                                 NaN                                 NaN                               -0.748   NaN
+                                                 |ig| vs toxe  pmos_on    -0.192                   3.94e-12                  1.97e-13                   0.05                                 NaN                                 NaN                               -0.488   NaN
+                                                 |ig| vs toxe pmos_off    -0.699                   8.88e-15                  5.24e-17                 0.0059                                 NaN                                 NaN                                -1.08   NaN
+subthreshold subset (source < 50 mV from rail, other > 0.5 V) nmos_off     0.562                        NaN                       NaN                    NaN                               0.899                              -0.551                                  NaN   498
+subthreshold subset (source < 50 mV from rail, other > 0.5 V) pmos_off     0.456                        NaN                       NaN                    NaN                                0.81                              -0.593                                  NaN   514
+
+written to C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\partA_transistor\data_check

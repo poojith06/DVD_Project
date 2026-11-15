@@ -1,0 +1,24 @@
+simulating 180 netlists ...
+  and2_284: ngspice did not converge - skipped
+              rel_kcl_vs_csv  rel_kcl_vs_resim
+gate  inputs                                  
+inv   0              2.3e-06           6.6e-07
+      1              1.6e-06           2.8e-07
+nand2 00             4.6e-06           6.1e-07
+      01             4.9e-06           3.4e-07
+      10             2.4e-06           5.5e-07
+      11             3.1e-06           6.2e-07
+nor2  00             4.0e-06           6.4e-07
+      01             2.0e-06           4.3e-07
+      10             1.7e-06           9.8e-08
+      11             8.0e-06           6.3e-07
+and2  00             2.3e-06           2.1e-07
+      01             4.0e-06           4.7e-07
+      10             3.0e-06           3.8e-07
+      11             3.6e-06           3.0e-07
+or2   00             1.6e-06           1.9e-07
+      01             2.6e-06           3.4e-07
+      10             2.9e-06           3.2e-07
+      11             4.4e-06           4.9e-07
+
+worst: nor2 11 row 599: KCL(SPICE currents) 3.100795e-11 vs CSV 3.100770e-11 (rel 8.0e-06); vs re-simulated -i(vsup) rel 1.5e-08

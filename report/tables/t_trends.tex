@@ -1,0 +1,20 @@
+% src: partA_transistor/data_check/trend_numbers.csv
+\begin{tabular}{llrrl}
+\toprule
+Trend & Case & Spearman & Last/first bin & Controlled effect \\
+\midrule
+OFF vs temperature & NMOS OFF & 0.172 & 2.21 & +0.39 dec/100\,$^{\circ}$C \\
+OFF vs temperature & PMOS OFF & 0.397 & 233 & +1.25 dec/100\,$^{\circ}$C \\
+\midrule
+OFF vs $|$vth0$|$ & NMOS OFF & -0.082 & 0.56 & -0.14 dec/50\,mV \\
+OFF vs $|$vth0$|$ & PMOS OFF & -0.091 & 0.13 & -0.30 dec/50\,mV \\
+\midrule
+$|i_g|$ vs toxe & NMOS ON & -0.375 & 0.0496 & -0.71 dec/0.1\,nm \\
+$|i_g|$ vs toxe & NMOS OFF & -0.602 & 0.0357 & -0.75 dec/0.1\,nm \\
+$|i_g|$ vs toxe & PMOS ON & -0.192 & 0.05 & -0.49 dec/0.1\,nm \\
+$|i_g|$ vs toxe & PMOS OFF & -0.699 & 0.0059 & -1.08 dec/0.1\,nm \\
+\midrule
+OFF, subthreshold subset & NMOS OFF & 0.562 & -- & +0.90 dec/100\,$^{\circ}$C, -0.55 dec/50\,mV \\
+OFF, subthreshold subset & PMOS OFF & 0.456 & -- & +0.81 dec/100\,$^{\circ}$C, -0.59 dec/50\,mV \\
+\bottomrule
+\end{tabular}

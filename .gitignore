@@ -1,0 +1,37 @@
+# LaTeX build files (keep main.tex, sections/, tables/, figures/, refs.bib and the final PDF)
+report/*.aux
+report/*.log
+report/*.bbl
+report/*.blg
+report/*.out
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz
+report/*.toc
+report/main.pdf
+
+# Python
+__pycache__/
+*.pyc
+
+
+# training runs and generated outputs (kept on disk, not in git)
+ml/runs/
+ml/results/
+ml/results_tuned/
+ml/logs/
+ml/full_data/
+validation_checks/sim/
+pipeline_out/
+
+# model binaries; the four final models are the exception
+*.joblib
+*.pt
+!results/models/*.joblib
+
+# bulky generated simulator files
+*_replay.cir
+archive/old_work/Datasets_hires/netlists/pmos_off_hires_ngspice.cir
+
+# personal study notes (not part of the project)
+archive/old_work/ML_Terms_Beginner_Guide.pdf

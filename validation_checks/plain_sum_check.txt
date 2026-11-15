@@ -1,0 +1,13 @@
+ gate                                           method  mean_accuracy_pct  median_error_pct  max_abs_error_pct  rows_with_negative_leakage  rows
+  inv plain sum of the currents into the vdd terminals              16.72             3.429               2460                           0   400
+  inv                    super-node (Kirchhoff) method              98.47             1.228              8.104                           0   400
+nand2 plain sum of the currents into the vdd terminals          -5.67e+05             41.13          1.545e+07                         137   800
+nand2                    super-node (Kirchhoff) method              99.02            0.5804              7.823                           0   800
+ nor2 plain sum of the currents into the vdd terminals               56.1             1.739               1781                           0   800
+ nor2                    super-node (Kirchhoff) method              98.96            0.7406              8.078                           0   800
+ and2 plain sum of the currents into the vdd terminals              -2167             11.49          1.096e+05                         128   800
+ and2                    super-node (Kirchhoff) method              98.84            0.9079              6.921                           0   800
+  or2 plain sum of the currents into the vdd terminals              23.98                23               2346                           0   800
+  or2                    super-node (Kirchhoff) method              98.85            0.8608              8.056                           0   800
+  ALL plain sum of the currents into the vdd terminals         -1.265e+05             12.97          1.545e+07                         265  3600
+  ALL                    super-node (Kirchhoff) method              98.87            0.8228              8.104                           0  3600

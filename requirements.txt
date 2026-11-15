@@ -1,7 +1,9 @@
-numpy
-pandas
-scikit-learn
-torch
-xgboost
-joblib
-matplotlib
+# Python packages used by the code in ml/, validation_checks/ and report/ (versions installed when the results were produced,
+# Python 3.12.7). SPICE: ngspice-44.2 (Windows, PTM 22 nm HP model card in model/).
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.13.1
+scikit-learn==1.5.1
+torch==2.14.1        # CPU or CUDA build; the saved models in results/models are loaded with joblib
+matplotlib==3.9.2
+joblib==1.4.2

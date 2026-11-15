@@ -1,0 +1,34 @@
+re-simulating 3,600 Part B rows ...
+  inv: max |resim/csv - 1| = 3.9e-06
+  nand2: max |resim/csv - 1| = 5.0e-06
+  nor2: max |resim/csv - 1| = 5.0e-06
+  and2: max |resim/csv - 1| = 4.9e-06
+  or2: max |resim/csv - 1| = 4.9e-06
+
+Input-pin currents relative to the recorded supply leakage (%):
+ gate inputs  median_supplied_over_leak_pct  max_supplied_over_leak_pct  median_absorbed_over_leak_pct  max_absorbed_over_leak_pct
+  inv      0                              0                           0                          0.441                         6.2
+  inv      1                         0.0598                         2.9                             -0                          -0
+nand2     00                              0                           0                           45.8                          98
+nand2     01                          0.281                        4.83                          0.283                        3.28
+nand2     10                        0.00199                       0.039                          0.973                        18.8
+nand2     11                          0.138                        6.66                             -0                          -0
+ nor2     00                              0                           0                          0.714                          12
+ nor2     01                         0.0294                        1.36                         0.0474                       0.287
+ nor2     10                          0.378                        21.6                       0.000226                     0.00261
+ nor2     11                             56                     6.6e+03                             -0                          -0
+ and2     00                              0                           0                            0.2                        3.34
+ and2     01                         0.0806                         1.8                         0.0775                       0.954
+ and2     10                       0.000156                     0.00519                          0.078                       0.862
+ and2     11                          0.117                         4.2                             -0                          -0
+  or2     00                              0                           0                          0.181                       0.964
+  or2     01                          0.025                        0.88                         0.0404                       0.258
+  or2     10                          0.157                        3.43                       8.44e-05                    0.000897
+  or2     11                          0.547                        9.64                             -0                          -0
+
+CLA (12,800 rows): perfect gate models, with and without the pin currents:
+                                                     estimate  mean_accuracy_pct  median_accuracy_pct  bias_pct  p95_abs_error_pct
+     sum of Part B SPICE gate leakages (ceiling, as reported)              99.16                99.34     -0.66               2.11
+ceiling + pin currents of internally driven inputs at logic 1              99.37                99.61     -0.39               1.96
+
+written to C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\results\analysis\loading_analysis

@@ -1,0 +1,19 @@
+% src: archive/model_benchmark/results/summary_validation.csv
+\begin{tabular}{lrrrrr}
+\toprule
+Model type & NMOS ON & NMOS OFF & PMOS ON & PMOS OFF & Mean \\
+\midrule
+Components MLP (VF) & 0.273 & 0.112 & 0.277 & 0.187 & 0.212 \\
+Ensemble top-3 & 0.139 & 0.241 & 0.157 & 0.407 & 0.236 \\
+Hybrid & 0.211 & 0.390 & 0.203 & 0.574 & 0.345 \\
+Components MLP & 0.283 & 0.325 & 0.281 & 0.491 & 0.345 \\
+ResNet & 0.219 & 0.335 & 0.472 & 0.425 & 0.363 \\
+PINN & 0.391 & 0.519 & 0.302 & 0.784 & 0.499 \\
+MLP & 0.425 & 0.775 & 0.324 & 0.860 & 0.596 \\
+MoE & 0.598 & 0.662 & 0.441 & 1.108 & 0.702 \\
+FT-Transformer & 0.684 & 0.816 & 0.607 & 1.036 & 0.786 \\
+Multi-task MLP & 0.597 & 0.800 & 0.485 & 1.290 & 0.793 \\
+GPR & 0.181 & 1.460 & 0.131 & 2.303 & 1.019 \\
+Hybrid (LightGBM) & 1.786 & 0.404 & 1.981 & 0.756 & 1.232 \\
+\bottomrule
+\end{tabular}

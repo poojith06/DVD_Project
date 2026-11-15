@@ -1,0 +1,114 @@
+
+=== STEP 1 : Part A datasets: 4 single-transistor netlists, VDD = 1 V, rndseed 13 / 12 / 14 / 15 (13:06)
+skipped: using the saved partA_transistor\data\*.csv (10,000 rows each)
+
+=== STEP 2 : Part A data check: Kirchhoff residuals and trend plots (13:06)
+1. Kirchhoff check, id + ig + is + ib per row
+    case  rows  median_abs_sum_A  max_abs_sum_A  median_rel  p95_rel  max_rel  rows_rel_gt_1e-3  median_max_terminal_I_A
+ nmos_on 10000          8.18e-12       9.87e-10    5.13e-07 4.22e-06 2.84e-02                15                 2.66e-05
+nmos_off 10000          2.59e-17       8.29e-13    8.50e-07 3.87e-06 8.96e-06                 0                 3.00e-11
+ pmos_on 10000          4.20e-14       1.00e-10    4.85e-09 1.57e-06 1.36e-02                18                 1.52e-05
+pmos_off 10000          1.00e-19       9.16e-13    1.14e-06 5.52e-06 9.91e-06                 0                 1.47e-13
+
+   PMOS OFF residual vs size of the largest terminal current:
+     max|I| in [1e-15, 1e-14) A:    39 rows, median |sum| 3.8e-21 A, max |sum| 1.2e-20 A, median rel 3.8e-07, max rel 1.2e-06
+     max|I| in [1e-14, 1e-12) A:  6276 rows, median |sum| 4.0e-20 A, max |sum| 1.3e-18 A, median rel 1.4e-06, max rel 9.9e-06
+     max|I| in [1e-12, 1e-09) A:  3054 rows, median |sum| 1.1e-17 A, max |sum| 9.6e-16 A, median rel 8.8e-07, max rel 9.2e-06
+     max|I| in [1e-09, 1e+00) A:   631 rows, median |sum| 3.9e-15 A, max |sum| 9.2e-13 A, median rel 8.0e-07, max rel 8.8e-06
+     rows with |sum| > 1e-15 A: 514; with |sum| > 1e-16 A: 1222
+
+2. Trends (Spearman: monotonic correlation of log10 I with the parameter; ratio: last / first bin median;
+   controlled effect: change of log10 I (decades) for the stated step, other inputs held fixed)
+                                                         plot     case  spearman  binned_median_first_bin_A  binned_median_last_bin_A  ratio_last_over_first  controlled_effect_decades_per_100C  controlled_effect_decades_per_50mV  controlled_effect_decades_per_0.1nm  rows
+                                   OFF current vs temperature nmos_off     0.172                   1.67e-11                   3.7e-11                   2.21                               0.386                                 NaN                                  NaN   NaN
+                                   OFF current vs temperature pmos_off     0.397                   1.32e-14                  3.08e-12                    233                                1.25                                 NaN                                  NaN   NaN
+                                        OFF current vs |vth0| nmos_off   -0.0822                   3.07e-11                  1.72e-11                   0.56                                 NaN                              -0.138                                  NaN   NaN
+                                        OFF current vs |vth0| pmos_off   -0.0913                   2.65e-13                  3.44e-14                   0.13                                 NaN                              -0.304                                  NaN   NaN
+                                                 |ig| vs toxe  nmos_on    -0.375                   6.53e-11                  3.24e-12                 0.0496                                 NaN                                 NaN                               -0.705   NaN
+                                                 |ig| vs toxe nmos_off    -0.602                   8.06e-11                  2.88e-12                 0.0357                                 NaN                                 NaN                               -0.748   NaN
+                                                 |ig| vs toxe  pmos_on    -0.192                   3.94e-12                  1.97e-13                   0.05                                 NaN                                 NaN                               -0.488   NaN
+                                                 |ig| vs toxe pmos_off    -0.699                   8.88e-15                  5.24e-17                 0.0059                                 NaN                                 NaN                                -1.08   NaN
+subthreshold subset (source < 50 mV from rail, other > 0.5 V) nmos_off     0.562                        NaN                       NaN                    NaN                               0.899                              -0.551                                  NaN   498
+subthreshold subset (source < 50 mV from rail, other > 0.5 V) pmos_off     0.456                        NaN                       NaN                    NaN                                0.81                              -0.593                                  NaN   514
+
+written to C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\pipeline_out\partA_data_check
+
+=== STEP 3 : Training and model comparison (80:10:10, split seed 42, 4 model types x 4 cases) (13:07)
+skipped: using the saved models in C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\results\models and the saved tables in results\partA
+
+=== STEP 4 : Resnet OFF tuning and selection on validation (13:07)
+skipped (saved result: results\partA\resnet_tuning.csv, chosen setting blocks=5)
+
+=== STEP 5 : Part B: gate SPICE (5 netlists, rndseed = 16) and ML gate evaluation (13:07)
+skipped: using the saved partB_gates\data\*.csv (3,600 rows)
+C:\Users\anees\anaconda3\Lib\site-packages\joblib\externals\loky\backend\context.py:136: UserWarning: Could not find the number of physical cores for the following reason:
+[WinError 2] The system cannot find the file specified
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "C:\Users\anees\anaconda3\Lib\site-packages\joblib\externals\loky\backend\context.py", line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+               ^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Users\anees\anaconda3\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ gate inputs  corners  spice_median_A  ml_median_A  bias_pct  median_error_pct  p95_error_pct  mean_error_pct  max_error_pct  mean_accuracy_pct
+  inv      0      200        2.19e-08     2.21e-08    -0.731              1.24           4.35            1.63            8.1               98.4
+  inv      1      200        9.82e-08     9.81e-08      1.17               1.2            3.5            1.42           6.99               98.6
+nand2     00      200         5.4e-10     5.37e-10    -0.031             0.388           1.29           0.507           3.17               99.5
+nand2     01      200           5e-08     5.03e-08    -0.133              1.09           4.29            1.43           7.46               98.6
+nand2     10      200        8.53e-09     8.54e-09   -0.0793             0.341           1.83           0.557           7.82               99.4
+nand2     11      200        1.95e-07     1.95e-07      1.14              1.19           3.48            1.41           6.76               98.6
+ nor2     00      200        4.38e-08     4.42e-08    -0.728              1.24           4.34            1.62           8.08               98.4
+ nor2     01      200        2.04e-07     2.02e-07     0.692             0.964            3.5            1.21           5.44               98.8
+ nor2     10      200        1.61e-08     1.61e-08      0.44             0.637           1.98           0.767           2.91               99.2
+ nor2     11      200        2.26e-10     2.28e-10    -0.116             0.417           1.42           0.544           2.34               99.5
+ and2     00      200        9.92e-08     9.98e-08      1.16              1.19           3.48            1.41           6.92               98.6
+ and2     01      200        1.67e-07     1.66e-07    0.0565              0.82           2.74           0.951            4.2                 99
+ and2     10      200        1.13e-07     1.14e-07       0.8             0.913           3.27            1.23           5.54               98.8
+ and2     11      200        2.26e-07      2.3e-07     0.461             0.777           2.88            1.05           5.06                 99
+  or2     00      200         1.6e-07     1.61e-07     0.033             0.795           2.74           0.987           3.63                 99
+  or2     01      200        2.38e-07     2.41e-07    0.0782              0.81           2.88            1.01           4.05                 99
+  or2     10      200        4.31e-08     4.22e-08    -0.387             0.743           2.75           0.982           6.01                 99
+  or2     11      200        2.22e-08     2.23e-08    -0.724               1.2           4.34            1.61           8.06               98.4
+
+per gate: {'inv': 98.47, 'nand2': 99.02, 'nor2': 98.96, 'and2': 98.84, 'or2': 98.85}
+ALL 3600 gate simulations: mean accuracy 98.87 %, median accuracy 99.18 %, p95 error 3.24 %, max 8.10 %
+
+=== STEP 6 : Part C: CLA SPICE (rndseed = 16, 64 vectors x 200 corners) and ML evaluation (plain gate sum) (13:07)
+skipped: using the saved partC_cla\data\cla3.csv (12,800 rows)
+1. 33 gates: {'nand2': 27, 'inv': 3, 'and2': 2, 'or2': 1}
+2. logic: all 64 vectors give the correct 3-bit sum and match the SPICE outputs (VDD/2)
+3-4. summed 33 gate leakages for 12800 (vector, corner) rows from C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\pipeline_out\gate_results\gate_predictions.csv
+
+Mean accuracy (Part C, 12,800 rows; per-vector medians for the last definition):
+  definition                                             ML  ceiling
+  acc_100_minus_mean_abs_pct                          99.00    99.16
+  acc_100_minus_median_abs_pct                        99.17    99.34
+  acc_100_minus_abs_mean_signed_pct                   99.96    99.16
+  acc_mean_over_groups_median_ratio_pct               99.44    99.23
+
+Part B (same gate predictions): mean accuracy 98.87 %   Part C: 99.00 %
+Part C ML: bias -0.23 %, median |e| 0.83 %, p95 |e| 2.57 %, worst +4.02 % (vector 1+7, corner 39, T 122 C)
+
+Error breakdown (mean |error| %, ML / ceiling):
+  temperature (C)        (-40.001, 0.0]: 1.16/0.56  (0.0, 40.0]: 0.99/0.48  (40.0, 85.0]: 1.03/0.89  (85.0, 125.0]: 0.83/1.38
+  NMOS vth0 quartile     low: 1.19/1.20  mid-low: 0.90/0.98  mid-high: 0.91/0.72  high: 0.99/0.46
+  PMOS |vth0| quartile   low: 1.22/0.74  mid-low: 0.99/0.92  mid-high: 0.94/0.89  high: 0.84/0.81
+
+written to C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\pipeline_out\cla_results
+
+=== STEP 7 : Compare with the submitted results (13:07)
+Part B: rows 3600 (same keys as submitted: True); SPICE leakage identical to submitted: True
+   mean accuracy 98.87 % (submitted 98.87 %, expected 98.87 %); median accuracy 99.18 % (submitted 99.18 %)
+   largest relative difference of the ML leakage vs submitted: 0.00e+00  ->  PASS
+Part C: rows 12800 (same keys as submitted: True); SPICE leakage identical to submitted: True
+   mean accuracy 99.00 % (submitted 99.00 %, expected 99.00 %); median accuracy 99.17 % (submitted 99.17 %)
+   largest relative difference of the ML leakage vs submitted: 0.00e+00  ->  PASS
+REPRODUCTION: PASS
+
+done (13:07), outputs in C:\IIITH Academic\SEM 5\Digital VLSI Design\repo\pipeline_out

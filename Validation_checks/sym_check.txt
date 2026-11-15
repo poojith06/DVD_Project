@@ -1,7 +1,0 @@
-﻿max over 10 rows: relative difference between the original and the swapped-and-mirrored simulation
-          rel_id  rel_is  rel_ig  rel_ib  abs_ig_A  abs_ib_A
-case                                                        
-nmos_off 5.2e-01 3.0e-01 0.0e+00 1.8e-02   0.0e+00   6.6e-15
-nmos_on  3.1e-03 3.1e-03 2.0e-01 8.0e-04   4.4e-16   1.3e-13
-pmos_off 5.8e+00 3.1e+03 1.0e+00 1.7e-01   4.4e-16   1.7e-15
-pmos_on  9.1e-04 9.2e-04 0.0e+00 4.4e-06   0.0e+00   1.0e-14

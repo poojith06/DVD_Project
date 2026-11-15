@@ -1,0 +1,211 @@
+set,case,row,variant,rel_id,rel_is,rel_ig,rel_ib,abs_diff_over_largest_I,rel_dominant
+Part A rows,nmos_off,2250,a_as_generated,0.007319346543387675,0.001155906122033465,0.0,0.0,0.0010031350821131523,0.001155906122033465
+Part A rows,nmos_off,2250,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,2250,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,9435,a_as_generated,0.004213255003187472,0.00010924699324957707,0.0,0.0013651356334443865,0.00010924699324957707,0.00010924699324957707
+Part A rows,nmos_off,9435,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,9435,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,4997,a_as_generated,0.012974813292436667,0.015647272915040093,0.0,0.0,0.007143811351944909,0.012974813292436667
+Part A rows,nmos_off,4997,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,4997,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,8962,a_as_generated,3.081169964259067e-05,2.4397503647383825e-05,0.0,0.01647848521165882,2.4397503647383825e-05,2.4397503647383825e-05
+Part A rows,nmos_off,8962,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,8962,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,8329,a_as_generated,0.13004961619256275,0.032379058775030604,0.0,2.7897360032974238e-06,0.026675985317349174,0.032379058775030604
+Part A rows,nmos_off,8329,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,8329,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,5777,a_as_generated,0.00043800671902314756,9.894524370221674e-05,0.0,0.0,8.072060902091742e-05,9.894524370221674e-05
+Part A rows,nmos_off,5777,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,5777,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,8732,a_as_generated,0.009443465329721774,0.006907098500024711,0.0,0.0,0.004006219151657951,0.006907098500024711
+Part A rows,nmos_off,8732,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,8732,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,3000,a_as_generated,0.0003994093582823868,0.0005929670513964061,0.0,0.0,0.00023871441437210779,0.0003994093582823868
+Part A rows,nmos_off,3000,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,3000,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,6833,a_as_generated,0.0013067119100644267,0.0014135494367712494,0.0,0.13063505991672084,0.0014135494367712494,0.0014135494367712494
+Part A rows,nmos_off,6833,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,6833,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,554,a_as_generated,0.00029648516832950694,0.0008368410922450069,0.0,0.0,0.00021897079783546875,0.00029648516832950694
+Part A rows,nmos_off,554,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,554,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,7749,a_as_generated,5.315029384521031e-05,2.666699852264727e-05,0.0,0.0,1.8166804694010975e-05,2.666699852264727e-05
+Part A rows,nmos_off,7749,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,7749,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,52,a_as_generated,0.02171100052974843,0.02080225995752191,0.0,0.0,0.010737541311348065,0.02080225995752191
+Part A rows,nmos_off,52,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,52,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,2849,a_as_generated,0.002613887059167989,0.0052497162315550735,0.0,1.2997413514736614e-05,0.0017486583418872149,0.002613887059167989
+Part A rows,nmos_off,2849,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,2849,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,6242,a_as_generated,3.1691602675133185e-06,7.42252737050744e-06,0.0,0.0,2.2308227876576047e-06,3.1691602675133185e-06
+Part A rows,nmos_off,6242,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,6242,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,9124,a_as_generated,0.0012874917600527562,0.002057642805554845,0.0,0.0,0.0007925833223032281,0.0012874917600527562
+Part A rows,nmos_off,9124,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,nmos_off,9124,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,3408,a_as_generated,0.0961071112690843,0.08638760473180662,0.0,9.81572610196675e-05,0.08638760473180662,0.08638760473180662
+Part A rows,pmos_off,3408,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,3408,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,8450,a_as_generated,0.9992646486186166,73.09575101840623,0.0,0.0,0.9992648510696127,0.9992646486186166
+Part A rows,pmos_off,8450,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,8450,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,8069,a_as_generated,0.009113529310159631,0.007962083521785042,0.0,0.13380547679725238,0.009113529310159631,0.009113529310159631
+Part A rows,pmos_off,8069,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,8069,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5088,a_as_generated,0.0016765542670539857,0.001521053165281909,0.0,0.10146937633137938,0.0016765542670539857,0.0016765542670539857
+Part A rows,pmos_off,5088,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5088,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,6997,a_as_generated,0.0,1.5694741047869224e-07,0.0,3.2044282164768396,1.5694741047869224e-07,1.5694741047869224e-07
+Part A rows,pmos_off,6997,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,6997,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5528,a_as_generated,6.755894010750648e-06,6.755935088893912e-06,0.0,0.2107450215875192,6.755894010750648e-06,6.755894010750648e-06
+Part A rows,pmos_off,5528,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5528,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,7920,a_as_generated,1.7063720827482176,2.0703219729383795,0.0,6.797099774629426e-06,0.942041518627452,1.7063720827482176
+Part A rows,pmos_off,7920,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,7920,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,9885,a_as_generated,4.7456486554286865e-05,2.3728338992255045e-06,0.0,16.143771935627992,4.7456486554286865e-05,4.7456486554286865e-05
+Part A rows,pmos_off,9885,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,9885,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,1602,a_as_generated,0.012911646835262205,0.013135101893276145,0.0,0.0029356171242594636,0.012911646835262205,0.012911646835262205
+Part A rows,pmos_off,1602,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,1602,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,4660,a_as_generated,6.322759150934527e-05,6.323150952587899e-05,0.0,0.00835917707914679,6.322759150934527e-05,6.322759150934527e-05
+Part A rows,pmos_off,4660,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,4660,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,9945,a_as_generated,0.005259630638196824,0.00523148257351875,0.0,0.0005051485687376716,0.00523148257351875,0.00523148257351875
+Part A rows,pmos_off,9945,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,9945,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5038,a_as_generated,1.0257356311619807,8.712075501729103,0.0,1.2540188893855063e-05,0.929286260679659,1.0257356311619807
+Part A rows,pmos_off,5038,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5038,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5817,a_as_generated,14.198725863380236,0.9405000873114482,0.0,2.356707749996401e-06,0.8821635519827865,0.9405000873114482
+Part A rows,pmos_off,5817,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,5817,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,6218,a_as_generated,2.8701707021540983,1.3127741092377907,0.0,9.579834302912673e-05,0.902851046220026,1.3127741092377907
+Part A rows,pmos_off,6218,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,6218,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,2152,a_as_generated,4.449964378038819e-05,4.4506159652532565e-05,0.0,0.003287659729317293,4.449964378038819e-05,4.449964378038819e-05
+Part A rows,pmos_off,2152,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+Part A rows,pmos_off,2152,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,0,a_as_generated,0.0,0.0,0.0,0.013673245322947008,2.7207553933082344e-08,0.0
+gate points,nmos_off,0,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,0,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,0,a_as_generated,0.0,0.0,0.0,0.006612508124354475,1.2963425727835892e-08,0.0
+gate points,pmos_off,0,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,0,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,10,a_as_generated,5.938065972037566e-06,0.0,0.0,0.9817183999560191,5.938065972037566e-06,5.938065972037566e-06
+gate points,nmos_off,10,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,10,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,10,a_as_generated,0.0,1.244079890316815e-06,0.0,177.73429672467557,1.244079735543357e-06,0.0
+gate points,pmos_off,10,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,10,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,20,a_as_generated,2.5194057225476714e-06,0.0,0.0,0.5329170903248039,2.5194057225476714e-06,2.5194057225476714e-06
+gate points,nmos_off,20,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,20,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,20,a_as_generated,0.0,2.9848242577912856e-07,0.0,0.3659233265690362,2.9848242577912856e-07,2.9848242577912856e-07
+gate points,pmos_off,20,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,20,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,30,a_as_generated,1.9594204034468827e-05,0.0,0.0,80.44053313085105,1.9594204034468827e-05,1.9594204034468827e-05
+gate points,nmos_off,30,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,30,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,30,a_as_generated,0.0,5.408517495613741e-06,0.0,0.9847355709589574,5.408517495613741e-06,5.408517495613741e-06
+gate points,pmos_off,30,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,30,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,40,a_as_generated,0.0,0.0,0.0,0.056539046043652064,8.155425392285544e-08,0.0
+gate points,nmos_off,40,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,40,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,40,a_as_generated,0.0,0.0,0.0,0.15220556997271842,1.0816710594417303e-07,0.0
+gate points,pmos_off,40,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,40,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,50,a_as_generated,3.3602940928983513e-06,0.0,0.0,0.8875940960785201,3.3602940928983513e-06,3.3602940928983513e-06
+gate points,nmos_off,50,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,50,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,50,a_as_generated,0.0,1.6967083010399958e-06,0.0,92.82064814832005,1.6967083010399958e-06,1.6967083010399958e-06
+gate points,pmos_off,50,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,50,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,60,a_as_generated,0.0,0.0,0.0,0.5931230684736304,8.015925887290264e-07,0.0
+gate points,nmos_off,60,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,60,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,60,a_as_generated,0.0,0.0,0.0,0.2004174657493709,3.8460469324503823e-08,0.0
+gate points,pmos_off,60,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,60,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,70,a_as_generated,0.0,0.0,0.0,0.030411672086912936,5.074653376910744e-07,0.0
+gate points,nmos_off,70,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,70,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,70,a_as_generated,0.0,0.0,0.0,0.038970058377336685,3.3213424477350034e-08,0.0
+gate points,pmos_off,70,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,70,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,80,a_as_generated,0.0,0.0,0.0,0.9062508099662782,3.101267184994743e-07,0.0
+gate points,nmos_off,80,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,80,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,80,a_as_generated,0.0,1.0839814635451904e-07,0.0,9.874783000254771,1.0839814635451904e-07,0.0
+gate points,pmos_off,80,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,80,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,90,a_as_generated,0.0,0.0,0.0,7.876818146047755,1.6839225757955398e-06,0.0
+gate points,nmos_off,90,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,90,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,90,a_as_generated,0.0,1.076516650541244e-06,0.0,0.9168293744119841,1.076516650541244e-06,1.076516650541244e-06
+gate points,pmos_off,90,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,90,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,100,a_as_generated,0.0,0.0,0.0,0.006410046851032407,1.753478462900772e-07,0.0
+gate points,nmos_off,100,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,100,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,100,a_as_generated,0.0,2.0226479934260434e-07,0.0,0.15318421400927942,2.0226479934260434e-07,2.0226479934260434e-07
+gate points,pmos_off,100,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,100,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,110,a_as_generated,3.3090558932230502e-06,0.0,0.0,15.621369721066177,3.671557671880636e-06,3.3090558932230502e-06
+gate points,nmos_off,110,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,110,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,110,a_as_generated,0.0,4.159857913732243e-06,0.0,0.9510990522854528,4.159857913732243e-06,4.159857913732243e-06
+gate points,pmos_off,110,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,110,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,120,a_as_generated,1.607897994931743e-05,0.0,0.0,135.79448402924996,1.607897994931743e-05,1.607897994931743e-05
+gate points,nmos_off,120,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,120,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,120,a_as_generated,0.0,4.5787954864244484e-05,0.0,0.9937817598482886,4.5787954864244484e-05,4.5787954864244484e-05
+gate points,pmos_off,120,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,120,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,130,a_as_generated,0.0,0.0,0.0,0.1335539792538355,6.902658106662164e-08,0.0
+gate points,nmos_off,130,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,130,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,130,a_as_generated,0.0,1.171914734832056e-07,0.0,0.48885293478340364,1.171914734832056e-07,1.171914734832056e-07
+gate points,pmos_off,130,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,130,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,140,a_as_generated,0.0,0.0,0.0,0.4584974945404411,1.6557415321238692e-07,0.0
+gate points,nmos_off,140,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,140,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,140,a_as_generated,0.0,4.918851251419206e-07,0.0,6.824369291411664,4.918851251419206e-07,4.918851251419206e-07
+gate points,pmos_off,140,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,140,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,150,a_as_generated,1.6841490696461796e-05,0.0,0.0,57.591425524980124,1.6841490696461796e-05,1.6841490696461796e-05
+gate points,nmos_off,150,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,150,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,150,a_as_generated,0.0,8.166610838708748e-06,0.0,0.982889802969471,8.166610838708748e-06,8.166610838708748e-06
+gate points,pmos_off,150,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,150,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,160,a_as_generated,2.9682530496694807e-06,0.0,0.0,0.6153447569376909,3.5637469445545172e-06,2.9682530496694807e-06
+gate points,nmos_off,160,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,160,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,160,a_as_generated,0.0,6.212621376365401e-07,0.0,0.5764468955305502,7.459003688122678e-07,6.212621376365401e-07
+gate points,pmos_off,160,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,160,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,170,a_as_generated,0.0,0.0,0.0,0.981663215509383,6.024020519126672e-07,0.0
+gate points,nmos_off,170,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,170,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,170,a_as_generated,0.0,2.3131666827594292e-07,0.0,30.010722606242567,2.3131656126119034e-07,0.0
+gate points,pmos_off,170,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,170,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,180,a_as_generated,0.0,0.0,0.0,0.7408139030096321,3.820758573786527e-07,0.0
+gate points,nmos_off,180,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,180,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,180,a_as_generated,0.0,1.0940452212519369e-06,0.0,25.804739301026647,1.0940452212519369e-06,1.0940452212519369e-06
+gate points,pmos_off,180,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,180,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,190,a_as_generated,5.887305203912622e-06,0.0,0.0,0.7709603219688778,5.887305203912622e-06,5.887305203912622e-06
+gate points,nmos_off,190,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,nmos_off,190,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,190,a_as_generated,0.0,0.0,0.0,2.1284569587652804,3.779718005871736e-08,0.0
+gate points,pmos_off,190,b_equal_AD_AS_PD_PS,0.0,0.0,0.0,0.0,0.0,0.0
+gate points,pmos_off,190,c_geomod0,0.0,0.0,0.0,0.0,0.0,0.0

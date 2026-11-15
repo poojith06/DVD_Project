@@ -1,0 +1,58 @@
+% ML-driven PVT-variation-aware leakage estimation, PTM 22 nm HP -- IEEE conference format, final version.
+% Numbers come only from the saved result files (see docs/REPORT_NOTES.md); every table and number carries a "% src:" comment.
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds}
+\sisetup{exponent-product=\times}
+\usepackage[hidelinks]{hyperref}   % last
+
+% shrink a table only if it is wider than the column
+\newsavebox{\tabbox}
+\newcommand{\fitcol}[1]{\sbox{\tabbox}{#1}\ifdim\wd\tabbox>\columnwidth\resizebox{\columnwidth}{!}{\usebox{\tabbox}}\else\usebox{\tabbox}\fi}
+
+% Switches for optional material (true = include)
+\newif\ifexpFirstModels \expFirstModelstrue   % first model set, benchmark, components model (Sec. V-C)
+\newif\ifexpSymmetry    \expSymmetrytrue      % drain-source symmetry test (Sec. V-F)
+\newif\ifexpDist        \expDisttrue          % appendix: current-magnitude distribution
+\newif\ifexpFamilies    \expFamiliestrue      % appendix: per-family gate accuracy (comparison only)
+
+\begin{document}
+\title{ML-Driven PVT-Variation-Aware Leakage Estimation of CMOS Gates and a 3-bit Carry-Lookahead Adder in a 22\,nm High-Performance Technology}
+\author{\IEEEauthorblockN{Mididoddi Sai Poojith}
+\IEEEauthorblockA{\textit{Team Dvd Angels, IIIT Hyderabad}\\ Roll no.\ 2025122010\\ mididoddi.poojith@research.iiit.ac.in}
+\and
+\IEEEauthorblockN{Devang Bordoloi}
+\IEEEauthorblockA{\textit{Team Dvd Angels, IIIT Hyderabad}\\ Roll no.\ 2025122003\\ devang.bordoloi@research.iiit.ac.in}
+\and
+\IEEEauthorblockN{Vajrapu Venkata Sai Aneesh}
+\IEEEauthorblockA{\textit{Team Dvd Angels, IIIT Hyderabad}\\ Roll no.\ 2025122002\\ aneesh.vajrapu@research.iiit.ac.in}
+\and
+\IEEEauthorblockN{Apanna Nihaal}
+\IEEEauthorblockA{\textit{Team Dvd Angels, IIIT Hyderabad}\\ Roll no.\ 2025122007\\ nihaal.appana@research.iiit.ac.in}
+}
+\maketitle
+
+\input{sections/00_abstract}
+\input{sections/01_intro}
+\input{sections/02_setup}
+\input{sections/03_data}
+\input{sections/04_datacheck}
+\input{sections/05_models}
+\input{sections/06_gates}
+\input{sections/07_circuit}
+\input{sections/08_errors}
+\input{sections/09_assumptions}
+\input{sections/10_limits}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\input{sections/12_appendix}
+\end{document}

@@ -1,0 +1,95 @@
+D1  datasets: four CSVs, 10,000 rows, exact columns in the specified order
+  [PASS] partA_transistor/data/nmos_on.csv  - shape (10000, 16), columns in order: True
+  [PASS] partA_transistor/data/nmos_off.csv  - shape (10000, 16), columns in order: True
+  [PASS] partA_transistor/data/pmos_on.csv  - shape (10000, 16), columns in order: True
+  [PASS] partA_transistor/data/pmos_off.csv  - shape (10000, 16), columns in order: True
+
+D2  example netlists: one per transistor case, one per gate, the test circuit
+  [PASS] partA_transistor/netlists/nmos_on_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True; own source on every terminal (Vd, Vg, Vs, Vb): True
+  [PASS] partA_transistor/netlists/nmos_off_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True; own source on every terminal (Vd, Vg, Vs, Vb): True
+  [PASS] partA_transistor/netlists/pmos_on_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True; own source on every terminal (Vd, Vg, Vs, Vb): True
+  [PASS] partA_transistor/netlists/pmos_off_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True; own source on every terminal (Vd, Vg, Vs, Vb): True
+  [PASS] partB_gates/netlists/inv_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True
+  [PASS] partB_gates/netlists/nand2_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True
+  [PASS] partB_gates/netlists/nor2_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True
+  [PASS] partB_gates/netlists/and2_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True
+  [PASS] partB_gates/netlists/or2_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True
+  [PASS] partC_cla/netlists/cla3_ngspice.cir  - options line present: True; includes ../../model/22nm_HP.pm: True
+  [PASS] partC_cla/netlists/cla3.sub
+  [PASS] partC_cla/netlists/gates.sub
+  [PASS] model/22nm_HP.pm
+
+D3  data check: Kirchhoff check per case and three trend plots
+  [PASS] partA_transistor/data_check/kcl_check.csv
+  [PASS] partA_transistor/data_check/trend_off_vs_temperature.png
+  [PASS] partA_transistor/data_check/trend_off_vs_vth0.png
+  [PASS] partA_transistor/data_check/trend_ig_vs_toxe.png
+  [PASS] partA_transistor/data_check/trend_numbers.csv
+  [PASS] partA_transistor/data_check/README.md
+
+D4  model comparison table: 4 model types x 4 cases, R2 / median / p95 on the VALIDATION set
+  [PASS] results/partA/model_comparison_validation.csv  - 16 rows = 4 cases x 4 model types; R2 is computed on log10|I| per current (id, ig, is, ib) and averaged (mean_r2_log); median and p95 are relative errors in %
+
+D5  chosen models: test median and p95, predicted-vs-SPICE plot per case, four saved model files
+  [PASS] results/partA/chosen_models_test.csv  - models: {'nmos_on': 'hybrid_analytic_mlp', 'nmos_off': 'resnet_mlp', 'pmos_on': 'gpr', 'pmos_off': 'resnet_mlp'}
+  [PASS] results/partA/parity_nmos_on.png
+  [PASS] results/models/nmos_on.joblib
+  [PASS] results/partA/parity_nmos_off.png
+  [PASS] results/models/nmos_off.joblib
+  [PASS] results/partA/parity_pmos_on.png
+  [PASS] results/models/pmos_on.joblib
+  [PASS] results/partA/parity_pmos_off.png
+  [PASS] results/models/pmos_off.joblib
+
+D6  gate results table (18 cases: SPICE median, ML median, bias, median error, p95 error)
+  [PASS] results/partB/gate_results.csv  - 18 rows; columns ['spice_median_A', 'ml_median_A', 'bias_pct', 'median_error_pct', 'p95_error_pct'] present
+  [PASS] results/partB/gate_predictions.csv (Section 5 columns, per case and corner)  - 3600 rows; SPICE leakage, ML leakage, SPICE output voltage, internal node voltages from SPICE (v_int, v_n) and ML (v_int_ml, v_n_ml: copies of the recorded SPICE voltages, as in spec step 4)
+
+D7  gate parity plot (ML vs SPICE leakage, log axes, all gate simulations)
+  [PASS] results/partB/gate_parity.png
+
+D8  test-circuit results: same metrics as the gate table, and a parity plot
+  [PASS] results/partC/cla3_results.csv  - 65 rows (overall + 64 vectors); SPICE median, ML median, bias, median and p95 error
+  [PASS] results/partC/cla3_parity.png
+
+D9  code that regenerates everything, in order, with fixed seeds
+  [PASS] step 1 Part A SPICE data: partA_transistor/netlists/nmos_on_ngspice.cir
+  [PASS] step 1 Part A SPICE data: partA_transistor/netlists/nmos_off_ngspice.cir
+  [PASS] step 1 Part A SPICE data: partA_transistor/netlists/pmos_on_ngspice.cir
+  [PASS] step 1 Part A SPICE data: partA_transistor/netlists/pmos_off_ngspice.cir
+  [PASS] step 2 data check: validation_checks/data_check.py
+  [PASS] step 3-4 training, selection: ml/train.py
+  [PASS] step 3-4 training, selection: ml/choose_weight.py
+  [PASS] step 3-4 training, selection: ml/choose_resnet.py
+  [PASS] step 3-4 training, selection: ml/assemble_tuned.py
+  [PASS] step 3-4 training, selection: ml/select_best.py
+  [PASS] step 5 Part B SPICE + ML: partB_gates/netlists/nand2_ngspice.cir
+  [PASS] step 5 Part B SPICE + ML: ml/evaluate_gates.py
+  [PASS] step 6 Part C SPICE + ML: partC_cla/netlists/cla3_ngspice.cir
+  [PASS] step 6 Part C SPICE + ML: partC_cla/scripts/regen_cla3.py
+  [PASS] step 6 Part C SPICE + ML: ml/evaluate_cla.py
+  [PASS] step 7 comparison: ml/reproduce_check.py
+  [PASS] step wrappers: run_pipeline.ps1
+  [PASS] step wrappers: run_pipeline.sh
+  [PASS] step wrappers: REPRODUCE.md
+  [PASS] validation_checks/pipeline_fast_run.txt  - fast path reproduces Part B 98.87 % and Part C 99.00 %
+  [PASS] validation_checks/netlist_resim_check.txt  - re-simulation of every netlist matches the CSVs
+  [PASS] validation_checks/regen_cla3_check.txt  - Part C regeneration script reproduces cla3.csv
+  [PASS] gen_cla3_gate_inputs.py (never committed) is no longer referred to in partC_cla/README.md or in the steps of REPRODUCE.md
+  [PASS] run_partC.sh (never committed) is no longer referred to in partC_cla/README.md or in the steps of REPRODUCE.md
+
+D10 report
+  [PASS] report/main.tex (IEEE conference format)
+  [PASS] report/DVD_Angels_Report.pdf (final report)
+
+Summary per deliverable:
+  D1: PASS (4/4 items)
+  D2: PASS (13/13 items)
+  D3: PASS (6/6 items)
+  D4: PASS (1/1 items)
+  D5: PASS (9/9 items)
+  D6: PASS (2/2 items)
+  D7: PASS (1/1 items)
+  D8: PASS (2/2 items)
+  D9: PASS (24/24 items)
+  D10: PASS (2/2 items)

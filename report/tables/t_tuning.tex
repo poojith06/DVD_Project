@@ -1,0 +1,15 @@
+% src: results/partA/resnet_tuning.csv (limit 1.05 x default = 0.3705)
+\begin{tabular}{lrrc}
+\toprule
+Setting & Val. score & Near-rail & Within limit \\
+\midrule
+default & 0.353 & 1.623 & yes \\
+blocks=5 & 0.326 & 1.162 & yes \\
+batch\_size=64 & 0.365 & 1.661 & yes \\
+epochs=1000 & 0.288 & 1.391 & yes \\
+huber\_beta=0.02 & 0.337 & 1.476 & yes \\
+lr=5e-4 & 0.481 & 1.929 & no \\
+width=512 & 0.301 & 1.266 & yes \\
+weight\_decay=0 & 0.361 & 1.549 & yes \\
+\bottomrule
+\end{tabular}

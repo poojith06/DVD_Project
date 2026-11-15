@@ -1,0 +1,19 @@
+\section{Assumptions and Definitions}\label{sec:assumptions}
+The project document leaves four points open. We made the following assumptions, which are ours; if the course staff define one of them differently, the numbers below change as stated.
+
+\textbf{1.\ Accuracy.} We define the accuracy of a set of simulations as $A_1=100\,\%-\overline{|e|}$ with the relative error $e=(\hat I-I)/I$ of each simulation, i.e.\ 100 minus the mean absolute percentage error. This is the strictest of the common readings and is the headline of this report. Table~\ref{tab:accdefs} gives the final models under three further definitions: 100 minus the median $|e|$, 100 minus the absolute mean signed error, and 100 minus the mean over groups (the 18 gate cases, or the 64 vectors) of $|\operatorname{med}(\hat I)/\operatorname{med}(I)-1|$. Only $A_1$ is below 99\,\% for Part~B; the signed-error definition rewards cancellation of errors of opposite sign and is not a measure of per-simulation accuracy.
+% src: results/analysis/report_numbers/accuracy_definitions.csv
+\begin{table}[t]
+\caption{Final models under four accuracy definitions (\%).}
+\label{tab:accdefs}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\fitcol{\input{tables/t_accdefs}}
+\end{table}
+
+\textbf{2.\ Gate leakage.} The leakage of a gate is the current drawn from the $V_{DD}$ source, which is what the SPICE netlists record ($-i(V_{sup})$); the currents of the input sources are excluded. Their size relative to the recorded leakage is small except in two cases: for NOR2 with inputs \texttt{11}, the case with the smallest leakage of all (median $\SI{2.26e-10}{\ampere}$), the input sources supply a median of 56\,\% of the recorded leakage (maximum $6.6\times10^{3}\,\%$), and for NAND2 with inputs \texttt{00} they absorb a median of 45.8\,\% (maximum 98\,\%); for all other cases the median is below 1\,\%. With another definition the SPICE reference, and with it the gate-level accuracy, would change.
+% src: results/analysis/loading_analysis/pin_current_shares.csv
+
+\textbf{3.\ Training data.} The models are trained only on the 16 dataset columns of the project document (inputs: $V_{DD}$, temperature, $W$, terminal voltages, process parameters; targets: $i_d,i_g,i_s,i_b$). The components model of the first set, which learns from BSIM4 internal component currents that are not dataset columns, is therefore excluded from the final set (Sec.~\ref{sec:models:first}).
+
+\textbf{4.\ PMOS OFF gate and body currents.} The PMOS OFF $i_g$ and $i_b$ are read from the BSIM4 instance currents because the source branch currents are rounded to about $\num{2.2e-16}$\,A, far above the true currents (Sec.~\ref{sec:data:readout}); every terminal still has its own voltage source.

@@ -1,0 +1,16 @@
+% src: partA_transistor/README.md (nominal values from 22nm_HP.pm); spec Section 4
+\begin{tabular}{lccc}
+\toprule
+Parameter & Rule & NMOS range & PMOS range \\
+\midrule
+VDD & nominal $\pm 10\,\%$ & 0.9--1.1 V & 0.9--1.1 V \\
+$V_d$, $V_s$ & uniform, 0 to VDD & 0--VDD & 0--VDD \\
+$W$ & uniform, $1$--$8\times L_{min}$ & 22--176 nm & 22--176 nm \\
+Temperature & uniform & $-40$--$125\,^{\circ}$C & $-40$--$125\,^{\circ}$C \\
+vth0 (V) & nominal $\pm 10\,\%$ & 0.4528--0.5534 & $-0.5067$ to $-0.4145$ \\
+toxe (m) & nominal $\pm 10\,\%$ & \num{0.945e-9}--\num{1.155e-9} & \num{0.99e-9}--\num{1.21e-9} \\
+ndep (cm$^{-3}$) & nominal $\pm 10\,\%$ & \num{4.95e18}--\num{6.05e18} & \num{3.96e18}--\num{4.84e18} \\
+u0 (m$^2$/Vs) & nominal $\pm 10\,\%$ & 0.036--0.044 & 0.00855--0.01045 \\
+xj (m) & nominal $\pm 10\,\%$ & \num{6.48e-9}--\num{7.92e-9} & \num{6.48e-9}--\num{7.92e-9} \\
+\bottomrule
+\end{tabular}
