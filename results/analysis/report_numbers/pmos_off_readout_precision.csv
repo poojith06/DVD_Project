@@ -1,7 +1,0 @@
-,rows,distinct_values,exact_zeros,negative,on_2.22e-16_grid_pct,abs_below_5e-15_pct,median_abs_A
-"old dataset, ig from -i(vg)",10000.0,421.0,1760.0,224.0,31.75,82.56,6.66134e-16
-same rows' ig from -i(vg) (source readout),10000.0,428.0,1835.0,233.0,32.58,82.61,6.10623e-16
-"final dataset, ig from BSIM4",10000.0,9977.0,0.0,0.0,0.0,82.50999999999999,5.305445e-16
-"old dataset, ib from -i(vb)",10000.0,3252.0,1.0,0.0,0.02,1.11,1.01308e-14
-same rows' ib from -i(vb) (source readout),10000.0,3283.0,0.0,0.0,0.04,1.15,1.01308e-14
-"final dataset, ib from BSIM4",10000.0,6679.0,0.0,0.0,0.0,1.15,1.011565e-14

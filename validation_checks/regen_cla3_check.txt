@@ -1,6 +1,0 @@
-Part C regeneration script: python partC_cla/scripts/regen_cla3.py --compare
-(unchanged netlist partC_cla/netlists/cla3_ngspice.cir, 200 recorded corners from partC_cla/data/corners.csv, 64 vectors; writes a new file, never data/cla3.csv)
-
---corners 3  : 192 rows (3 corners x 64 vectors): 31 columns, max relative difference to data/cla3.csv 0.00e+00 (leak 0.00e+00)
---corners 200: 12800 rows (200 corners x 64 vectors): 31 columns, max relative difference 1.85e-06 (column leak)
-REGENERATION: PASS

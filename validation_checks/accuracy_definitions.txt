@@ -1,6 +1,0 @@
-                                                  Part B, ML (3,600 rows, 18 groups)  Part C, ML (12,800 rows, 64 groups)  Part C, ceiling (perfect gate models)
-definition                                                                                                                                                      
-(1) 100 - mean |e|                                                             98.87                                99.00                                  99.16
-(2) 100 - median |e|                                                           99.18                                99.17                                  99.34
-(3) 100 - |mean e|                                                             99.81                                99.96                                  99.16
-(4) mean over groups of 100 - |median ratio - 1|                               99.27                                99.44                                  99.23

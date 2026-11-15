@@ -1,3 +1,0 @@
-estimate,mean_accuracy_pct,median_accuracy_pct,bias_pct,p95_abs_error_pct
-"sum of Part B SPICE gate leakages (ceiling, as reported)",99.16086417385412,99.3388802776058,-0.6611197223942025,2.110857237957452
-ceiling + pin currents of internally driven inputs at logic 1,99.37116934905282,99.60566118890054,-0.3943388110994559,1.9606146964445188

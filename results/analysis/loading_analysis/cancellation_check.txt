@@ -1,7 +1,0 @@
-Part C, relative difference of the ML sum to the ceiling sum, (ML - ceiling) / ceiling in percent, 12,800 rows:
-  median 0.698, mean 0.805, 5th percentile -0.904, 95th percentile 2.957
-  temperature (-40.001, 0.0]: median 0.937
-  temperature (0.0, 40.0]: median 0.816
-  temperature (40.0, 85.0]: median 0.437
-  temperature (85.0, 125.0]: median 0.772
-Part B, signed gate error (ML - SPICE) / SPICE in percent, 3,600 rows: median 0.121, mean 0.191

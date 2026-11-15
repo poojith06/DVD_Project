@@ -1,99 +1,43 @@
-# Part B – Gate-Level SPICE Reference
+# Part B – Gate-level validation (assignment steps 3–5)
 
-SPICE reference for the gate-level validation (step 3): INV, NAND2, NOR2, AND2 and OR2, every input combination, at 200 random PVT corners.
-These results are for evaluation only and are not used for training.
+INV, NAND2, NOR2, AND2 and OR2 (static CMOS; AND2 / OR2 = NAND2 / NOR2 + INV, simulated as complete gates), every
+input combination at 200 random PVT corners: 18 cases × 200 = 3,600 simulations. A corner is one draw of VDD,
+temperature and process values; all NMOS share one draw and all PMOS another (`rndseed` 16, the same 200 corners as
+Part C). The SPICE data are used for evaluation only, never for training.
 
-## Setup
+**The final Part B results are in `step5_results/`.** Running `evaluate_gates.py` writes to `pipeline_out/` by default
+and never overwrites them.
 
-| Item | Value |
-|---|---|
-| Model file | `22nm_HP.pm` (PTM 22 nm HP, same file as Part A) |
-| Nominal VDD | 1 V |
-| Channel length L | 22 nm; widths fixed per gate, all within 1–8 × Lmin |
-| Corners | 200 random PVT corners drawn inside ngspice (`set rndseed=16`) |
-| Inputs | exactly 0 or VDD (ideal sources) |
-| Simulator | ngspice-44.2 (batch, `.op`) |
-| Netlist options | `.options gmin=1e-18 abstol=1e-18 reltol=1e-6 vntol=1e-9` |
-| Cases | 18 (INV: 2, each 2-input gate: 4) × 200 corners = 3,600 simulations |
+## step3_spice_reference/ — step 3, deliverable D2
 
-## Folder layout
+Run from `netlists/`: `ngspice_con -b <gate>_ngspice.cir`, which writes `../data/<gate>.csv`.
 
-```
-partB_gates/
-├── netlists/
-│   ├── inv_ngspice.cir
-│   ├── nand2_ngspice.cir
-│   ├── nor2_ngspice.cir
-│   ├── and2_ngspice.cir
-│   └── or2_ngspice.cir
-├── data/
-│   ├── inv.csv             400 rows (2 inputs x 200 corners)
-│   ├── nand2.csv           800 rows (4 inputs x 200 corners)
-│   ├── nor2.csv            800 rows
-│   ├── and2.csv            800 rows
-│   └── or2.csv             800 rows
-```
+| File | What it is | Step | Deliverable |
+|---|---|---|---|
+| `netlists/inv_ngspice.cir` | INV netlist (PMOS 88 nm, NMOS 44 nm), 200 corners × A = 0, 1 | 3 | D2 |
+| `netlists/nand2_ngspice.cir` | NAND2 netlist (2 × PMOS 88 nm parallel, 2 × NMOS 88 nm series), internal node x | 3 | D2 |
+| `netlists/nor2_ngspice.cir` | NOR2 netlist (2 × PMOS 176 nm series, 2 × NMOS 44 nm parallel), internal node y | 3 | D2 |
+| `netlists/and2_ngspice.cir` | AND2 netlist (NAND2 + INV), nodes x and NAND2 output | 3 | D2 |
+| `netlists/or2_ngspice.cir` | OR2 netlist (NOR2 + INV), nodes y and NOR2 output | 3 | D2 |
+| `data/inv.csv` | INV SPICE results, 400 rows: corner, inputs, corner values, `leak` (current from VDD), `v_out` | 3 | D6, D7 (reference) |
+| `data/nand2.csv` | NAND2 SPICE results, 800 rows, plus `v_int` (x) | 3 | D6, D7 (reference) |
+| `data/nor2.csv` | NOR2 SPICE results, 800 rows, plus `v_int` (y) | 3 | D6, D7 (reference) |
+| `data/and2.csv` | AND2 SPICE results, 800 rows, plus `v_int` (x) and `v_n` (NAND2 output) | 3 | D6, D7 (reference) |
+| `data/or2.csv` | OR2 SPICE results, 800 rows, plus `v_int` (y) and `v_n` (NOR2 output) | 3 | D6, D7 (reference) |
 
-## How the corners are drawn
+## step4_ml_prediction/ — step 4, deliverable D9
 
-As in Part A (`../partA_transistor`), all random values are drawn inside ngspice with `sunif(0)` (uniform in −1 to 1) and applied with `alter` (VDD and input sources), `altermod` (model parameters) and `option temp`.
-A corner is one random draw of VDD, temperature and process parameters. All NMOS in a gate share one draw and all PMOS share another. VDD is drawn first because the input voltages depend on it. Each corner is then simulated for every input combination.
+| File | What it is | Step | Deliverable |
+|---|---|---|---|
+| `evaluate_gates.py` | Gives every transistor of each gate its terminal voltages from the recorded SPICE node voltages, predicts its currents with the four final transistor models, and computes the gate leakage drawn from VDD with Kirchhoff's current law. Writes `gate_predictions.csv`, `gate_results.csv`, `gate_parity.png`. Run: `python partB_gates/step4_ml_prediction/evaluate_gates.py [--models-dir DIR] [--out DIR]` (defaults: `step2_training/saved_models`, `pipeline_out/gate_results`). | 4–5 | D6, D7, D9 |
 
-| Parameter | Rule | Range |
-|---|---|---|
-| VDD | nominal ± 10 % | 0.9 – 1.1 V |
-| Temperature | uniform | −40 – 125 °C |
-| vth0, toxe, ndep, u0, xj | nominal from `22nm_HP.pm` ± 10 %, separate for NMOS and PMOS | same ranges as the Part A README |
+## step5_results/ — step 5, deliverables D6, D7
 
-Draw order per corner: `vdd, temp, n_vth0, n_toxe, n_ndep, n_u0, n_xj, p_vth0, p_toxe, p_ndep, p_u0, p_xj`, with `rndseed=16`.
-Every gate netlist and the Part C CLA testbench (`../partC_cla/netlists/cla3_ngspice.cir`) use this identical block. Corner *k* is therefore the same in every Part B file and in Part C, as required by the project spec. The corners are listed in `../partC_cla/data/corners.csv`.
+| File | What it is | Step | Deliverable |
+|---|---|---|---|
+| `gate_results.csv` | 18 gate / input cases: SPICE median, ML median, bias, median, 95th-percentile, mean and max error, mean accuracy | 5 | D6 |
+| `gate_predictions.csv` | all 3,600 simulations: corner values, SPICE and ML leakage, error, SPICE output voltage, internal node voltages from SPICE and ML (the ML values are the recorded SPICE voltages used as inputs in step 4) | 5 | D6 |
+| `gate_parity.png` | ML vs SPICE gate leakage, all 3,600 simulations, log axes | 5 | D7 |
 
-**Note:** each process parameter is applied with its own `altermod` line. ngspice applies only the first parameter on a multi-parameter `altermod` line, so writing them all on one line would vary vth0 only (same fix as in the Part A netlists).
-
-## Gates
-
-Standard static CMOS. AND2 and OR2 are a NAND2 / NOR2 followed by an INV and are simulated as complete gates.
-
-| Gate | Transistors (W) | Internal nodes recorded |
-|---|---|---|
-| INV | PMOS 88n, NMOS 44n | – |
-| NAND2 | 2 × PMOS 88n (parallel), 2 × NMOS 88n (series) | `v_int` = x (between series NMOS) |
-| NOR2 | 2 × PMOS 176n (series), 2 × NMOS 44n (parallel) | `v_int` = y (between series PMOS) |
-| AND2 | NAND2 as above + INV (PMOS 88n, NMOS 44n) | `v_int` = x, `v_n` = NAND2 output |
-| OR2 | NOR2 as above + INV (PMOS 88n, NMOS 44n) | `v_int` = y, `v_n` = NOR2 output |
-
-## CSV format
-
-Columns: `corner, A, [B], vdd, temp, n_vth0, n_toxe, n_ndep, n_u0, n_xj, p_vth0, p_toxe, p_ndep, p_u0, p_xj, leak, [v_int], [v_n], v_out`
-
-- `leak` is the current drawn from the VDD supply (A).
-- `v_int`, `v_n` and `v_out` are the SPICE node voltages (V). Step 4 uses them to set the terminal voltages of each transistor for the ML prediction.
-
-## How to run
-
-ngspice writes the CSVs to `../data/`, so run the netlists from inside `netlists/`.
-
-**Windows (PowerShell):**
-```powershell
-cd partB_gates\netlists
-$ng = "C:\Program Files\Spice64\bin\ngspice_con.exe"
-foreach ($g in "inv","nand2","nor2","and2","or2") { & $ng -b "${g}_ngspice.cir" | Out-Null }
-```
-
-**Linux / macOS / Git Bash:**
-```bash
-cd partB_gates/netlists
-for g in inv nand2 nor2 and2 or2; do ngspice -b ${g}_ngspice.cir > /dev/null 2>&1; done
-```
-
-All five gates together take about a minute.
-
-## Checks
-
-| Check | Result |
-|---|---|
-| Rows | 400 / 800 / 800 / 800 / 800, no missing values |
-| Corners identical to Part C (`corners.csv`) | yes, all files |
-| Output logic (v_out vs VDD/2) | correct for every row |
-| Independent re-simulation of sample rows from their recorded corner values | identical |
-| Sum of these gate leakages vs full Part C CLA SPICE | mean accuracy 99.16 % (see the Part C README) |
+Mean accuracy over all 3,600 simulations: **98.87 %** (per gate: INV 98.47 %, NAND2 99.02 %, NOR2 98.96 %,
+AND2 98.84 %, OR2 98.85 %).

@@ -1,3 +1,0 @@
-﻿33 gates; logic matches the SPICE outputs for all 64 vectors
-ML (sum of ML gate leakages)     : mean accuracy 98.89 %, median accuracy 99.06 %, p95 error 2.49 %, max 5.41 %
-for reference, SPICE gates summed: mean accuracy 99.16 %, median accuracy 99.34 %, p95 error 2.11 %, max 3.83 %

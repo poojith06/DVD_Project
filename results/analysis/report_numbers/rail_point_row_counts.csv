@@ -1,7 +1,0 @@
-case,split,rows,source_within_20mV_of_rail_and_|Vds|>0.9VDD,source_within_50mV_of_rail_and_|Vds|>0.8VDD,|Vds|>0.9VDD,|Vds|>0.9VDD_pct
-nmos_off,train,8000,27,127,76,0.95
-nmos_off,validation,1000,6,24,14,1.4000000000000001
-nmos_off,test,1000,2,13,9,0.8999999999999999
-pmos_off,train,8000,26,144,87,1.0875
-pmos_off,validation,1000,5,23,8,0.8
-pmos_off,test,1000,4,14,9,0.8999999999999999

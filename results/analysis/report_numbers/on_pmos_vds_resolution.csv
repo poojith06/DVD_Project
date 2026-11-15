@@ -1,4 +1,0 @@
-gate,inputs,device,rows,median_|Vds|_V,min_|Vds|_V,rows_|Vds|_below_2e-5V,rows_|Vds|_exactly_0_in_csv
-inv,0,ON PMOS (source at VDD),200,9.999999999998899e-05,4.999999999921734e-06,30,0
-nand2,00,ON PMOS (source at VDD),200,0.0,0.0,199,130
-nor2,00,ON PMOS (source at VDD),200,9.80000000000425e-05,4.000000000004e-06,31,0

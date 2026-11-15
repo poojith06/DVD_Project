@@ -1,7 +1,0 @@
-CLA: 18 recorded internal / output nodes x 12800 simulations = 230400 node voltages
-  deviation from the nearer rail (V): median 3.00e-04, 95th percentile 3.10e-03, max 1.07e-02
-  node voltages more than 1 mV from a rail: 25.08 %; more than 10 mV: 0.23 %
-  worst nodes (max deviation, V): v_s2 1.07e-02, v_s1 1.07e-02, v_p2 1.07e-02, v_p1 1.07e-02, v_s0 1.07e-02
-  median deviation by temperature: T <= 85 C 1.79e-04 V, T > 85 C 9.21e-04 V
-Part B AND2 first-stage output v_n (isolated gate): deviation from the nearer rail median 1.00e-04 V, max 1.06e-02 V
-Part B OR2 first-stage output v_n (isolated gate): deviation from the nearer rail median 1.14e-04 V, max 1.04e-02 V

@@ -1,4 +1,0 @@
-ngspice available here: ****** ** ngspice-44+ : Circuit level simulation program ** Compiled with KLU Di
-corners regenerated: 200, saved: 200
-corners identical to the saved ones (relative difference < 1e-5 in every column): 0 of 200
-median relative difference over the corners: 1.012; first corner saved vdd 1.0829, regenerated 1.0103
