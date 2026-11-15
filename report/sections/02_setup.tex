@@ -10,13 +10,13 @@ Table~\ref{tab:setup} summarises the experimental setup. The test circuit is a 3
 \toprule
 Item & Value \\
 \midrule
-Technology & PTM 22\,nm HP, BSIM4 level 54 (\texttt{22nm\_HP.pm}); $V_{DD}=\SI{1}{\volt}$ nominal, $L=\SI{22}{\nano\meter}$ \\
-Sampling & $V_{DD}$ and process parameters (vth0, toxe, ndep, u0, xj) nominal $\pm10\,\%$; $T=-40$--$125\,^\circ$C; $W=1$--$8\,L_{min}$; $V_d,V_s\sim\mathcal U[0,V_{DD}]$ \\
+Technology & PTM \SI{22}{\nano\meter} HP model card, BSIM4 level 54; $V_{DD}=\SI{1}{\volt}$ nominal, $L=\SI{22}{\nano\meter}$ \\
+Sampling & $V_{DD}$ and process parameters (vth0, toxe, ndep, u0, xj) nominal $\pm10\,\%$; $T=$ \SIrange{-40}{125}{\celsius}; $W=1$--$8\,L_{min}$; $V_d,V_s\sim\mathcal U[0,V_{DD}]$ \\
 Data & 4 single-transistor datasets $\times$ 10,000 rows (Part~A); 5 gates, 18 input cases $\times$ 200 corners $=$ 3,600 (Part~B); 64 vectors $\times$ 200 corners $=$ 12,800 (Part~C) \\
 Simulator & ngspice-44.2 (Windows, \texttt{.op}, one netlist per dataset); \texttt{.options gmin=1e-18 abstol=1e-18 reltol=1e-6 vntol=1e-9}~\cite{ngspice} \\
 Models & 4 types (GPR, hybrid, ResNet, PINN); split 80:10:10, split seed 42, model seed 0; SPICE \texttt{rndseed} 12--15 (Part~A), 16 (Parts~B, C) \\
 Software & Python 3.12.7, PyTorch 2.14.1~\cite{pytorch}, scikit-learn 1.5.1~\cite{sklearn}, SciPy 1.13.1~\cite{scipy} \\
-Hardware & Intel Core i5-12450H (8 cores), 15.7\,GB RAM, NVIDIA RTX 3050 Laptop GPU (4\,GB) \\
+Hardware & Intel Core i5-12450H (8 cores), \SI{15.7}{\giga\byte} RAM, NVIDIA RTX 3050 Laptop GPU (\SI{4}{\giga\byte}) \\
 Use of data & Part~B and C data are for \emph{evaluation only}: never used for training, tuning or model selection \\
 \bottomrule
 \end{tabular}

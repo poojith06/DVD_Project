@@ -3,7 +3,7 @@ Leakage current is a large part of the power budget of nanometre CMOS circuits a
 Estimating it over many PVT corners with transistor-level SPICE simulation is accurate but slow, because every circuit, input vector and corner needs its own simulation.
 A surrogate that predicts the currents of a single transistor from its bias, geometry, temperature and process parameters can be evaluated in microseconds and reused for every circuit built from the same transistors.
 
-This work builds such a hierarchy for the PTM 22\,nm high-performance (HP) model card~\cite{ptm,ptmweb} (BSIM4~\cite{bsim4}) at a nominal supply of 1\,V: \emph{transistor} $\rightarrow$ \emph{gate} $\rightarrow$ \emph{circuit} (Fig.~\ref{fig:flow}).
+This work builds such a hierarchy for the PTM \SI{22}{\nano\meter} high-performance (HP) model card~\cite{ptm,ptmweb} (BSIM4~\cite{bsim4}) at a nominal supply of \SI{1}{\volt}: \emph{transistor} $\rightarrow$ \emph{gate} $\rightarrow$ \emph{circuit} (Fig.~\ref{fig:flow}).
 Four machine-learning models predict the terminal currents $(i_d,i_g,i_s,i_b)$ of an NMOS or PMOS transistor in its ON and OFF state. Only these four models are then used to predict the leakage of an inverter, NAND2, NOR2, AND2 and OR2 for every input combination at 200 random corners, and the leakage of a 3-bit carry-lookahead adder as the sum of its 33 gate leakages; every prediction is compared with a transistor-level SPICE simulation.
 The target is a mean accuracy of up to 99\,\%.
 

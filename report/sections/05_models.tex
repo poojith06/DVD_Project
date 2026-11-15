@@ -2,7 +2,7 @@
 
 \subsection{Inputs, targets and signs}\label{sec:models:io}
 The inputs are the ten varying quantities (vdd, temp, $W$, $V_d$, $V_s$, vth0, toxe, ndep, u0, xj; $V_g$ and $V_b$ are fixed by the case) plus ten physics features, standardised on the training split: $V_{ds}$, $|V_{ds}|$, the gate-source and body-source voltages relative to the \emph{effective source} (lower terminal for NMOS, higher for PMOS), $1/T$, the subthreshold term $(|V_{gs}|-|V_{th0}|)/V_T$, the oxide fields $|V_g-V_d|/t_{ox}$ and $|V_g-V_s|/t_{ox}$, $\log_{10}W$ and $\log_{10}(1-e^{-|V_{ds}|/V_T})$.
-The target is $\log_{10}|I|$ of each terminal current (floor $10^{-18}$\,A $=$ \texttt{abstol}), so the models span 12 decades. Signs are restored afterwards: in the ON cases $\operatorname{sign}(i_d)=\operatorname{sign}(V_d-V_s)$; in the OFF cases the effective drain has a fixed sign and the sign of the effective source current comes from a gradient-boosting classifier that also sees the KCL margin; $i_g$ and $i_b$ use a fixed sign or a classifier if their sign changes. The error of a prediction is the relative error $|{\hat I}-I|/|I|$, so a wrong sign costs at least 100\,\%.
+The target is $\log_{10}|I|$ of each terminal current (floor $10^{-18}$\,\si{\ampere} $=$ \texttt{abstol}), so the models span 12 decades. Signs are restored afterwards: in the ON cases $\operatorname{sign}(i_d)=\operatorname{sign}(V_d-V_s)$; in the OFF cases the effective drain has a fixed sign and the sign of the effective source current comes from a gradient-boosting classifier that also sees the KCL margin; $i_g$ and $i_b$ use a fixed sign or a classifier if their sign changes. The error of a prediction is the relative error $|{\hat I}-I|/|I|$, so a wrong sign costs at least 100\,\%.
 % src: ml/pipeline.py (build_features, SignModel, relative_error_percent)
 
 \subsection{Model types}\label{sec:models:types}
@@ -22,23 +22,10 @@ The compliant models still give better gate- and circuit-level results: with GPR
 \fi
 
 \subsection{Final models: 80:10:10 split and four compliant types}\label{sec:models:final}
-The final set trains GPR, hybrid, ResNet and PINN on the four cases with an 80:10:10 split (8,000 / 1,000 / 1,000 rows, seed 42), using only the four dataset currents as targets. Per case, the type with the lowest mean validation median error over the four currents is chosen (the mean 95th percentile breaks ties); the test set is not used for any choice. Table~\ref{tab:modelcomp} compares the four types on the validation set, Table~\ref{tab:chosen} reports the chosen models on the test set, and the predicted-versus-SPICE plots are in Fig.~\ref{fig:parity} (Appendix).
+The final set trains GPR, hybrid, ResNet and PINN on the four cases with an 80:10:10 split (8,000 / 1,000 / 1,000 rows, seed 42), using only the four dataset currents as targets. Per case, the type with the lowest mean validation median error over the four currents is chosen (the mean 95th percentile breaks ties); the test set is not used for any choice. Table~\ref{tab:modelcomp} compares the four types on the validation set, Table~\ref{tab:chosen} reports the chosen models on the test set, and the predicted-versus-SPICE plots are in Appendix~\ref{app:parity}.
 Validation picks the hybrid model for NMOS ON, ResNet for NMOS OFF and PMOS OFF, and GPR for PMOS ON. For NMOS ON, hybrid, GPR and ResNet are tied (0.185, 0.186 and 0.186\,\% mean median error), so that choice is not significant. GPR is best where the physics is smooth (ON cases) and poor in the OFF cases (mean median error 1.37 and 2.12\,\%, 95th percentile above 22\,\%), where the current spans many decades and changes sign.
 % src: results/partA/model_comparison_validation.csv, results/partA/chosen_models_test.csv
-\begin{table*}[t]
-\caption{Model comparison on the validation set (80:10:10). $R^2$ is computed on $\log_{10}|I|$ per current and averaged; median and 95th percentile are relative errors in \%, averaged over $i_d,i_g,i_s,i_b$. Bold: model chosen by the lowest mean median error.}
-\label{tab:modelcomp}
-\centering\footnotesize
-\input{tables/t_modelcomp}
-\end{table*}
-\begin{table*}[t]
-\caption{Chosen models on the test set: median and 95th-percentile relative error (\%) per current.}
-\label{tab:chosen}
-\centering\footnotesize
-\input{tables/t_chosen}
-\end{table*}
-
-\textbf{Near-rail validation metric.} We added a second \emph{validation} metric, the mean error of $i_d$ and $i_s$ on the validation rows with $V_d$ and $V_s$ together within 0.2\,V of a rail, and tried a loss weight $w(r)=1+A\,e^{-r/\tau}$ ($\tau=\SI{50}{\milli\volt}$, $r$ the summed distance of $V_d$ and $V_s$ to the nearer rail). Rule, fixed beforehand: lowest near-rail error among weights whose normal validation score is within 10\,\% of the unweighted one. Validation chose $A=0$ (near-rail error 1.623\,\% against 1.684 and 1.824\,\% for $A=10$ and 30, whose normal scores of 0.533 and 0.523\,\% exceed the 10\,\% limit on the unweighted 0.353\,\%). The metric was added after the gate analysis, but all selection used validation data only.
+\textbf{Near-rail validation metric.} We added a second \emph{validation} metric, the mean error of $i_d$ and $i_s$ on the validation rows with $V_d$ and $V_s$ together within \SI{0.2}{\volt} of a rail, and tried a loss weight $w(r)=1+A\,e^{-r/\tau}$ ($\tau=\SI{50}{\milli\volt}$, $r$ the summed distance of $V_d$ and $V_s$ to the nearer rail). Rule, fixed beforehand: lowest near-rail error among weights whose normal validation score is within 10\,\% of the unweighted one. Validation chose $A=0$ (near-rail error 1.623\,\% against 1.684 and 1.824\,\% for $A=10$ and 30, whose normal scores of 0.533 and 0.523\,\% exceed the 10\,\% limit on the unweighted 0.353\,\%). The metric was added after the gate analysis, but all selection used validation data only.
 % src: results/partA/rail_weight_tuning.csv, ml/choose_weight.py
 
 \subsection{Tuning the ResNet for the OFF cases}\label{sec:models:tuning}

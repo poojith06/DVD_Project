@@ -1,5 +1,5 @@
 \begin{abstract}
-We estimate the leakage current of CMOS logic gates and of a 3-bit carry-lookahead adder (CLA) under process, voltage and temperature (PVT) variation with machine-learning models instead of SPICE, for the PTM 22\,nm high-performance technology at a nominal supply of 1\,V.
+We estimate the leakage current of CMOS logic gates and of a 3-bit carry-lookahead adder (CLA) under process, voltage and temperature (PVT) variation with machine-learning models instead of SPICE, for the PTM \SI{22}{\nano\meter} high-performance technology at a nominal supply of \SI{1}{\volt}.
 Four transistor-level models (NMOS and PMOS, ON and OFF) predict the four terminal currents of a single transistor; each is trained on 10,000 SPICE samples and chosen from four model types on the validation set of an 80:10:10 split.
 From these predictions and the recorded SPICE node voltages, the gate leakage is assembled with Kirchhoff's current law on the supply node.
 Over 3,600 gate simulations (five gates, 18 input cases, 200 corners) the mean accuracy is 98.87\,\% (median 99.18\,\%); the plain sum of the 33 gate leakages predicts the adder leakage over 12,800 simulations with a mean accuracy of 99.00\,\% (median 99.17\,\%).

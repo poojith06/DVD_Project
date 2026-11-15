@@ -1,6 +1,6 @@
 \section{Data Check}\label{sec:datacheck}
 
-\textbf{Kirchhoff check.} Because the currents are recorded into the terminals, $i_d+i_g+i_s+i_b$ must vanish. Table~\ref{tab:kcl} gives the residual for every case: the median is at most $\num{1.14e-6}$ of the largest terminal current (the six-digit CSV precision and \texttt{reltol}$=10^{-6}$; $\num{4.85e-9}$ for PMOS ON) and the 95th percentile is below $\num{5.6e-6}$ in all four cases. The only larger residuals are 15 NMOS ON and 18 PMOS ON rows with a relative residual above $10^{-3}$ (maximum $\num{2.84e-2}$ and $\num{1.36e-2}$); all are barely-on devices whose largest terminal current is at most $\SI{1.4e-13}{\ampere}$, with an absolute residual of at most $\SI{7.7e-16}{\ampere}$, about three times the $\num{2.2e-16}$\,A resolution of the branch-current readout.
+\textbf{Kirchhoff check.} Because the currents are recorded into the terminals, $i_d+i_g+i_s+i_b$ must vanish. Table~\ref{tab:kcl} gives the residual for every case: the median is at most $\num{1.14e-6}$ of the largest terminal current (the six-digit CSV precision and \texttt{reltol}$=10^{-6}$; $\num{4.85e-9}$ for PMOS ON) and the 95th percentile is below $\num{5.6e-6}$ in all four cases. The only larger residuals are 15 NMOS ON and 18 PMOS ON rows with a relative residual above $10^{-3}$ (maximum $\num{2.84e-2}$ and $\num{1.36e-2}$); all are barely-on devices whose largest terminal current is at most \SI{1.42e-13}{\ampere}, with an absolute residual of at most \SI{7.72e-16}{\ampere}, about three times the \SI{2.22e-16}{\ampere} resolution of the branch-current readout.
 % src: partA_transistor/data_check/kcl_check.csv, partA_transistor/data_check/README.md
 \begin{table}[t]
 \caption{Kirchhoff check of the four datasets (relative = divided by the largest terminal current of the row).}
@@ -10,21 +10,19 @@
 \fitcol{\input{tables/t_kcl}}
 \end{table}
 
-\textbf{Trend plots.} Figures~\ref{fig:trend1} and~\ref{fig:trend2} show the OFF current $\max(|i_d|,|i_s|)$ against temperature and against the threshold voltage, and the gate current $|i_g|$ against the oxide thickness, on log axes with the binned median. (Drain and source swap roles when $V_s>V_d$, so the larger of $|i_d|$ and $|i_s|$ is the channel leakage in either orientation.) All three trends have the expected sign in every case: the OFF current rises with temperature and falls with the threshold voltage, and the gate current falls steeply with the oxide thickness, by a factor of 20 to 170 over the 0.945--1.155\,nm range.
-Over all rows the temperature and $V_{th}$ trends are diluted, because the OFF current also contains junction and gate-induced-drain leakage that depend little on either (a floor near $10^{-14}$\,A for PMOS OFF in Fig.~\ref{fig:trend1}). Restricting to the subthreshold regime (source within 50\,mV of its rail, other terminal more than 0.5\,V away, about 500 rows per case) gives the textbook behaviour: $+0.90$ (NMOS) and $+0.81$ (PMOS) decades per 100\,$^\circ$C and $-0.55$ and $-0.59$ decades per 50\,mV of $V_{th}$, i.e.\ roughly 84--91\,mV per decade.
+\textbf{Trend plots.} Figures~\ref{fig:trend1} and~\ref{fig:trend2} show the OFF current $\max(|i_d|,|i_s|)$ against temperature and against the threshold voltage, and the gate current $|i_g|$ against the oxide thickness, on log axes with the binned median. (Drain and source swap roles when $V_s>V_d$, so the larger of $|i_d|$ and $|i_s|$ is the channel leakage in either orientation.) All three trends have the expected sign in every case: the OFF current rises with temperature and falls with the threshold voltage, and the gate current falls steeply with the oxide thickness, by a factor of 20 to 170 over the \SIrange{0.945}{1.155}{\nano\meter} range.
+Over all rows the temperature and $V_{th}$ trends are diluted, because the OFF current also contains junction and gate-induced-drain leakage that depend little on either (a floor near $10^{-14}$\,\si{\ampere} for PMOS OFF in Fig.~\ref{fig:trend1}). Restricting to the subthreshold regime (source within \SI{50}{\milli\volt} of its rail, other terminal more than \SI{0.5}{\volt} away, about 500 rows per case) gives the textbook behaviour: $+0.90$ (NMOS) and $+0.81$ (PMOS) decades per \SI{100}{\celsius} and $-0.55$ and $-0.59$ decades per \SI{50}{\milli\volt} of $V_{th}$, i.e.\ roughly \SIrange{84}{91}{\milli\volt} per decade.
 % src: partA_transistor/data_check/trend_numbers.csv, partA_transistor/data_check/README.md
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.49\textwidth]{figures/trend_off_vs_temperature.png}\hfill
-\includegraphics[width=0.49\textwidth]{figures/trend_off_vs_vth0.png}
-\caption{OFF current $\max(|i_d|,|i_s|)$ versus temperature (left) and versus $|V_{th0}|$ (right) for NMOS OFF and PMOS OFF; faint points are the 10,000 samples, the red line is the median in 20 bins.}
-\label{fig:trend1}
-% src: partA_transistor/data_check/trend_off_vs_temperature.png, trend_off_vs_vth0.png
-\end{figure*}
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/trend_ig_vs_toxe.png}
-\caption{Gate current $|i_g|$ versus oxide thickness for all four cases (tunnelling current: steep fall of the median with toxe).}
-\label{fig:trend2}
-% src: partA_transistor/data_check/trend_ig_vs_toxe.png
-\end{figure*}
+% Tables III and IV (Sec. V-D), placed here so that the two-column floats reach the page of their first reference
+\begin{table*}[t]
+\caption{Model comparison on the validation set (80:10:10). $R^2$ is computed on $\log_{10}|I|$ per current and averaged; median and 95th percentile are relative errors in \%, averaged over $i_d,i_g,i_s,i_b$. Bold: model chosen by the lowest mean median error.}
+\label{tab:modelcomp}
+\centering\footnotesize
+\input{tables/t_modelcomp}
+\end{table*}
+\begin{table*}[t]
+\caption{Chosen models on the test set: median and 95th-percentile relative error (\%) per current.}
+\label{tab:chosen}
+\centering\footnotesize
+\input{tables/t_chosen}
+\end{table*}

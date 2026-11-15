@@ -2,8 +2,8 @@
 
 \ifexpDist
 \section{Distribution of the current magnitudes}\label{app:dist}
-The leakage currents span many decades (Table~\ref{tab:dist}). The ON datasets are concentrated at $10^{-5}$--$10^{-4}$\,A (44.7\,\% of the NMOS ON and 46.7\,\% of the PMOS ON rows have $|i_s|$ in that decade). NMOS OFF is concentrated between $10^{-12}$ and $10^{-10}$\,A (67.7\,\% of the rows); PMOS OFF is spread almost evenly over the decades from below $10^{-15}$ to $10^{-11}$\,A (12--18\,\% per decade), and 63.5\,\% of its rows are below $10^{-12}$\,A.
-Small currents inside the ON datasets come from weakly driven devices, not from the corner with both terminals at $V_{DD}$: of the 162 PMOS ON rows with $|i_d|$ between $10^{-13}$ and $10^{-11}$\,A, all have the higher of $V_d,V_s$ below $|V_{th0}|$ (subthreshold operation), none has both terminals within 100\,mV of $V_{DD}$, and only 99 of the 10,000 rows (0.99\,\%) have both terminals that close to $V_{DD}$.
+The leakage currents span many decades (Table~\ref{tab:dist}). The ON datasets are concentrated at $10^{-5}$--$10^{-4}$\,\si{\ampere} (44.66\,\% of the NMOS ON and 46.69\,\% of the PMOS ON rows have $|i_s|$ in that decade). NMOS OFF is concentrated between $10^{-12}$ and $10^{-10}$\,\si{\ampere} (67.74\,\% of the rows); PMOS OFF is spread almost evenly over the decades from below $10^{-15}$ to $10^{-11}$\,\si{\ampere} (12.62--17.71\,\% per decade), and 63.52\,\% of its rows are below $10^{-12}$\,\si{\ampere}.
+Small currents inside the ON datasets come from weakly driven devices, not from the corner with both terminals at $V_{DD}$: of the 162 PMOS ON rows with $|i_d|$ between $10^{-13}$ and $10^{-11}$\,\si{\ampere}, all have the higher of $V_d,V_s$ below $|V_{th0}|$ (subthreshold operation), none has both terminals within \SI{100}{\milli\volt} of $V_{DD}$, and only 99 of the 10,000 rows (0.99\,\%) have both terminals that close to $V_{DD}$.
 % src: results/analysis/report_numbers/current_magnitude_distribution_pct.csv, report_data_stats.txt, validation_checks/pmos_on_small_currents2.txt
 \begin{table}[t]
 \caption{Distribution of $|i_s|$ in percent of the 10,000 rows per case.}
@@ -16,7 +16,7 @@ Small currents inside the ON datasets come from weakly driven devices, not from 
 
 \ifexpFamilies
 \section{Gate accuracy per model family (for comparison only)}\label{app:family}
-To see how much the model family matters at gate level we evaluated each family on its own for all four transistor cases (Table~\ref{tab:family}). \emph{These numbers are for comparison only; they were not used to choose the final models}, which were chosen on validation data only. The ResNet, which is among the best on the validation set, fails on NAND2 \texttt{00} (51.0\,\% mean accuracy with the 80:10:10 models, 24.6\,\% with the 70:15:15 models) because of its PMOS ON model: that case has the smallest leakage of the NAND2 cases (median $\SI{5.4e-10}{\ampere}$), and the gate currents of the two ON PMOS, which the super-node sum keeps, dominate it. GPR is accurate for the ON cases and is used there in the final set.
+To see how much the model family matters at gate level we evaluated each family on its own for all four transistor cases (Table~\ref{tab:family}). \emph{These numbers are for comparison only; they were not used to choose the final models}, which were chosen on validation data only. The ResNet, which is among the best on the validation set, fails on NAND2 \texttt{00} (51.02\,\% mean accuracy with the 80:10:10 models, 24.64\,\% with the 70:15:15 models) because of its PMOS ON model: that case has the smallest leakage of the NAND2 cases (median \SI{5.40e-10}{\ampere}), and the gate currents of the two ON PMOS, which the super-node sum keeps, dominate it. GPR is accurate for the ON cases and is used there in the final set.
 % src: results/analysis/report_numbers/family_gate_accuracy.csv, results/partB/gate_results.csv
 \begin{table}[t]
 \caption{One model family for all four cases, gate and circuit mean accuracy (\%); for comparison only, not used for selection.}
@@ -28,6 +28,7 @@ To see how much the model family matters at gate level we evaluated each family 
 \fi
 
 \section{Predicted versus SPICE currents of the chosen models}\label{app:parity}
+Fig.~\ref{fig:parity} compares the predictions of the four chosen models with SPICE on the test set.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.78\textwidth]{figures/parity_nmos_on.png}\\[1mm]

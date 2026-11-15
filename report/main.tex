@@ -17,6 +17,12 @@
 \newsavebox{\tabbox}
 \newcommand{\fitcol}[1]{\sbox{\tabbox}{#1}\ifdim\wd\tabbox>\columnwidth\resizebox{\columnwidth}{!}{\usebox{\tabbox}}\else\usebox{\tabbox}\fi}
 
+% Author layout: 2 x 2 blocks of equal width; \linebreakand starts a new row of author blocks
+\newlength{\authorcolwidth}\setlength{\authorcolwidth}{0.36\textwidth}
+\makeatletter
+\newcommand{\linebreakand}{\end{@IEEEauthorhalign}\hfill\mbox{}\par\mbox{}\hfill\begin{@IEEEauthorhalign}}
+\makeatother
+
 % Switches for optional material (true = include)
 \newif\ifexpFirstModels \expFirstModelstrue   % first model set, benchmark, components model (Sec. V-C)
 \newif\ifexpSymmetry    \expSymmetrytrue      % drain-source symmetry test (Sec. V-F)
@@ -26,14 +32,19 @@
 \begin{document}
 \title{Hierarchical ML-Based Leakage Estimation Under PVT Variation in 22\,nm CMOS}
 \author{%
-{\setlength{\tabcolsep}{3pt}%
-\begin{tabular}{@{}cccc@{}}
-Mididoddi Sai Poojith & Devang Bordoloi & Vajrapu Venkata Sai Aneesh & Apanna Nihaal\\
-\scriptsize 2025122010 & \scriptsize 2025122003 & \scriptsize 2025122002 & \scriptsize 2025122007\\
-\scriptsize mididoddi.poojith@research.iiit.ac.in & \scriptsize devang.bordoloi@research.iiit.ac.in &
-\scriptsize aneesh.vajrapu@research.iiit.ac.in & \scriptsize nihaal.appana@research.iiit.ac.in
-\end{tabular}}\\[0.5em]
-{\small\textit{Team Dvd Angels}, International Institute of Information Technology Hyderabad, India}}
+\IEEEauthorblockN{\makebox[\authorcolwidth]{Mididoddi Sai Poojith}}
+\IEEEauthorblockA{Roll no.\ 2025122010\\ mididoddi.poojith@research.iiit.ac.in}
+\and
+\IEEEauthorblockN{\makebox[\authorcolwidth]{Devang Bordoloi}}
+\IEEEauthorblockA{Roll no.\ 2025122003\\ devang.bordoloi@research.iiit.ac.in}
+\linebreakand
+\IEEEauthorblockN{\makebox[\authorcolwidth]{Vajrapu Venkata Sai Aneesh}}
+\IEEEauthorblockA{Roll no.\ 2025122002\\ aneesh.vajrapu@research.iiit.ac.in}
+\and
+\IEEEauthorblockN{\makebox[\authorcolwidth]{Apanna Nihaal}}
+\IEEEauthorblockA{Roll no.\ 2025122007\\ nihaal.appana@research.iiit.ac.in}
+\linebreakand
+\IEEEauthorblockA{\textbf{Team Dvd Angels}\\ International Institute of Information Technology Hyderabad, India}}
 \maketitle
 
 \input{sections/00_abstract}
