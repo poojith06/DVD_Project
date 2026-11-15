@@ -1,11 +1,10 @@
 \begin{abstract}
 We estimate the leakage current of CMOS logic gates and of a 3-bit carry-lookahead adder (CLA) under process, voltage and temperature (PVT) variation with machine-learning models instead of SPICE, for the PTM 22\,nm high-performance technology at a nominal supply of 1\,V.
-Four transistor-level models (NMOS and PMOS, ON and OFF) predict the four terminal currents of a single transistor from 10,000 SPICE samples per case; each is chosen from four model types (Gaussian process, hybrid analytical\,+\,MLP, residual MLP, physics-informed network) on a validation set of an 80:10:10 split.
-Using only these models and the recorded SPICE node voltages, the gate leakage is assembled with Kirchhoff's current law on the supply node.
-Over 3,600 gate simulations (five gates, 18 input cases, 200 corners) the mean accuracy is 98.87\,\% (median 99.18\,\%); the plain sum of the 33 gate leakages predicts the adder leakage over 12,800 simulations (64 vectors, 200 corners) with a mean accuracy of 99.00\,\% (median 99.17\,\%).
-The 99\,\% target is therefore met for the circuit but not for the gates, and the circuit result benefits from a cancellation: summing isolated gate leakages alone caps the adder accuracy at 99.16\,\% even with perfect gate models.
-The remaining gate error is concentrated in OFF transistors operated with the full supply across them, a corner of the input space that uniform sampling covers with less than 0.5\,\% of the training rows.
-We also report the negative results that shaped the method: a silent \texttt{altermod} bug in the data generation, a plain current sum that fails by orders of magnitude, and a drain--source symmetry that the device model does not have.
+Four transistor-level models (NMOS and PMOS, ON and OFF) predict the four terminal currents of a single transistor; each is trained on 10,000 SPICE samples and chosen from four model types on the validation set of an 80:10:10 split.
+From these predictions and the recorded SPICE node voltages, the gate leakage is assembled with Kirchhoff's current law on the supply node.
+Over 3,600 gate simulations (five gates, 18 input cases, 200 corners) the mean accuracy is 98.87\,\% (median 99.18\,\%); the plain sum of the 33 gate leakages predicts the adder leakage over 12,800 simulations with a mean accuracy of 99.00\,\% (median 99.17\,\%).
+Summing isolated gate leakages caps the adder accuracy at 99.16\,\% even with perfect gate models, and the circuit result benefits from a partial cancellation of errors.
+The remaining gate error is concentrated in OFF transistors with the full supply across them, an operating region that uniform sampling covers with about 0.3\,\% of the training rows.
 % src: results/partB/gate_results.csv, results/partC/cla3_results.csv, results/analysis/report_numbers/rail_point_row_counts.csv; docs/REPORT_NOTES.md sections 7, 8, 9.1
 \end{abstract}
 \begin{IEEEkeywords}

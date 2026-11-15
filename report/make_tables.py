@@ -183,7 +183,7 @@ write("t_plainsum", "results/analysis/report_numbers/plain_sum_check.csv", "lrrr
 ad = csv("results/analysis/report_numbers/accuracy_definitions.csv")
 write("t_accdefs", "results/analysis/report_numbers/accuracy_definitions.csv", "lrrr",
       ["Definition (accuracy in \\%)", "Part B (ML)", "Part C (ML)", "Part C (ceiling)"],
-      [[["$100-\\overline{|e|}$", "$100-\\mathrm{median}|e|$", "$100-|\\bar e|$", "$100-\\overline{|\\mathrm{med}_{ML}/\\mathrm{med}_{SPICE}-1|}$"][i]] + [P(ad.iloc[i, j]) for j in (1, 2, 3)] for i in range(4)])
+      [[["$100-\\overline{|e|}$", "$100-\\mathrm{median}|e|$", "$100-|\\bar e|$", "$100-\\overline{|\\mathrm{med}_{\\mathrm{ML}}/\\mathrm{med}_{\\mathrm{SPICE}}-1|}$"][i]] + [P(ad.iloc[i, j]) for j in (1, 2, 3)] for i in range(4)])
 fa = csv("results/analysis/report_numbers/family_gate_accuracy.csv")
 rows, mids = [], []
 for split in fa.split.unique():
@@ -233,7 +233,7 @@ bc = csv("results/analysis/report_numbers/error_breakdown_partC.csv")
 rows = []
 for (var, rng), rb in bb.groupby(["variable", "range"], sort=False):
     rc = bc[(bc.variable == var) & (bc.range == rng)].iloc[0]
-    label = rng.replace("(", "").replace("]", "").replace("-40.001", "-40").replace(", ", "--")
+    label = rng.replace("(", "", 1).replace("]", "").replace("-40.001", "-40").replace(", ", "--") if rng.startswith("(") and "," in rng else rng
     rows.append([tex(var) if rng == bb[bb.variable == var].range.iloc[0] else "", tex(label), P(rb.mean_abs_error_pct_ml.iloc[0] if hasattr(rb.mean_abs_error_pct_ml, "iloc") else rb.mean_abs_error_pct_ml),
                  P(rc.mean_abs_error_pct_ml), P(rc.mean_abs_error_pct_ceiling), f"{rc.bias_pct_ml:+.2f}", f"{rc.bias_pct_ceiling:+.2f}"])
 mids = [i for i in range(len(rows) - 1) if rows[i + 1][0] != ""]

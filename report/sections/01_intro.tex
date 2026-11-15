@@ -27,8 +27,7 @@ The target is a mean accuracy of up to 99\,\%.
 \end{figure}
 
 \textbf{Contributions.}
-(i)~A reproducible data-generation flow in which all random draws are made inside ngspice, together with ground-truth checks that caught and then verified the fix of a silent bug (Sec.~\ref{sec:data}).
+(i)~A reproducible data-generation flow in which all random draws are made inside ngspice, verified against direct model-card edits (Sec.~\ref{sec:data}).
 (ii)~Four transistor models chosen on validation data only from four model types, including a tuning step with a pre-declared selection rule (Sec.~\ref{sec:models}).
 (iii)~A Kirchhoff (super-node) construction of the gate leakage from predicted terminal currents, which makes the prediction exact for exact currents, whereas the plain current sum fails (Sec.~\ref{sec:gates}).
 (iv)~Gate- and circuit-level accuracy together with a ceiling analysis that separates the error of the models from the error of summing isolated gates (Sec.~\ref{sec:circuit}).
-(v)~An error analysis tracing the remaining error to a sparsely sampled operating region (Sec.~\ref{sec:errors}) and a candid account of the negative results.
