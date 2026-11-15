@@ -34,7 +34,7 @@ because for a transistor inside $\mathcal S$ Kirchhoff's law gives $i_d+i_s+i_b=
 \label{fig:supernode}
 \end{figure}
 
-\textbf{Metrics.} For every simulation $i$ the error is $e_i=(\hat I_i-I_i)/I_i$ with the ML leakage $\hat I_i$ and the SPICE leakage $I_i$; the bias is the median of $e_i$; a group is a gate case. The project document states a target of ``up to 99\,\% mean accuracy'' without defining it, so we use $A_1=1-\overline{|e|}$ as the headline and report three alternatives in Sec.~\ref{sec:assumptions}.
+\textbf{Metrics.} For every simulation $i$ the error is $e_i=(\hat I_i-I_i)/I_i$ with the ML leakage $\hat I_i$ and the SPICE leakage $I_i$; the bias is the median of $e_i$; a group is a gate case. The project document states a target of ``up to 99\,\% mean accuracy'' without defining it, so we use $A_1=100\,\%-\overline{|e|}$ as the headline and report three alternatives in Sec.~\ref{sec:assumptions}.
 
 \subsection{Results}\label{sec:gates:results}
 Over all 3,600 gate simulations the mean accuracy is 98.87\,\% (median 99.18\,\%, 95th percentile of $|e|$ 3.24\,\%, maximum 8.10\,\%); 35 rows exceed 5\,\% and 1,529 exceed 1\,\%. Per gate the mean accuracy is 98.47\,\% (INV), 99.02\,\% (NAND2), 98.96\,\% (NOR2), 98.84\,\% (AND2) and 98.85\,\% (OR2). The 18-case table is Table~\ref{tab:gate}, the parity plot Fig.~\ref{fig:gateparity}.
